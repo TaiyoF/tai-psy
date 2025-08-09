@@ -22,8 +22,8 @@ title: Taiyo Fujita
 email: sunday.taiyo@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   本ページは　大阪大学大学院人間科学研究科社会心理学研究室　藤田太陽　のWebページです。
-baseurl: "/tai-psy" # the subpath of your site, e.g. /blog
-url: "https://tai-psy.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://tai-psy.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
