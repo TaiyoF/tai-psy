@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>確率分布viewer - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">確率分布viewer</h1>
+    <div class="post-meta">
+      <span class="post-date">2025年08月08日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/statistics/">統計学</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <!-- Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- MathJax for beautiful formulas -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
+  </script>
+
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<!-- Probability viewer specific styles -->
+<link rel="stylesheet" href="/tai-psy/assets/css/probability-viewer.css" />
+
+<!-- スタイルは site 全体の style.css に統合済み -->
+
+<div class="probability-viewer">
+    <!-- 単一ビュー（PDF） -->
+
+    <div class="viewer-grid">
+        <!-- 左：操作パネル -->
+        <div class="panel panel-left" id="control-panel">
+            <div class="panel-header"><h3>操作</h3></div>
+
+            <div class="panel-subtitle">パラメータ設定</div>
+            <div id="parameter-controls"></div>
+
+            <div class="panel-subtitle">確率計算</div>
+            <div class="probability-head"><div id="probability-badge" class="probability-badge" aria-live="polite"></div></div>
+            <div id="probability-controls" class="probability-controls"></div>
+
+            <div class="panel-subtitle">統計量</div>
+            <div id="detailed-stats"></div>
+
+            <div class="panel-subtitle">アクション</div>
+            <div class="quick-actions actions-inline">
+                <button id="reset-btn" class="action-btn">リセット</button>
+                <button id="export-btn" class="action-btn">エクスポート</button>
+            </div>
+        </div>
+
+        <!-- 右：表示パネル -->
+        <div class="panel panel-right" id="display-panel">
+            <div class="panel-header">
+                <h3 id="plot-title">表示</h3>
+            </div>
+
+            <!-- 分布選択（上） -->
+            <div class="control-group control-top">
+                <label for="dist-selector">分布を選択</label>
+                <select id="dist-selector" class="modern-select">
+                    <option value="normal">正規分布 (Normal Distribution)</option>
+                    <option value="binomial">二項分布 (Binomial Distribution)</option>
+                    <option value="chi-squared">カイ二乗分布 (Chi-squared Distribution)</option>
+                    <option value="poisson">ポアソン分布 (Poisson Distribution)</option>
+                    <option value="exponential">指数分布 (Exponential Distribution)</option>
+                    <option value="uniform">一様分布 (Uniform Distribution)</option>
+                    <option value="gamma">ガンマ分布 (Gamma Distribution)</option>
+                </select>
+            </div>
+
+            <!-- 分布の説明（選択の下） -->
+            <div id="info-panel" class="info-panel info-top"></div>
+
+            <!-- 図 -->
+            <div id="plot" class="plot-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 確率分布ビューアのスクリプト -->
+<script src="/tai-psy/assets/js/probability-viewer.js"></script>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#確率分布</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+        <a href="/research/20250120/6/" class="prev-post">&larr; Zoteroで論文を管理する</a>
+      
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>

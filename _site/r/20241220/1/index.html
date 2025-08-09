@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tidyplotsで棒グラフを作成する - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">tidyplotsで棒グラフを作成する</h1>
+    <div class="post-meta">
+      <span class="post-date">2024年12月20日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/r/">R</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <p><a href="https://tidyplots.org/">tidyplots</a>を試してみたので、その跡をここに残しておきます。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<p>CRANで公開されているため、<code class="language-plaintext highlighter-rouge">install.packages()</code>でインストールします。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"tidyplots"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>私は使用していませんが、以下のようにgithubからもインストールできます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"jbengler/tidyplots"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="棒グラフの作成">棒グラフの作成</h3>
+
+<h4 id="パッケージの読み込み">パッケージの読み込み</h4>
+
+<p>まずはパッケージを読み込みましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyplots</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="データ">データ</h4>
+
+<p>今回使用するデータは<code class="language-plaintext highlighter-rouge">tidyplots</code>に付属されている<code class="language-plaintext highlighter-rouge">study</code>を使用します。<br />
+中身を確認してみましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">glimpse</span><span class="p">(</span><span class="n">study</span><span class="p">)</span><span class="w">
+</span><span class="n">Rows</span><span class="o">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="n">Columns</span><span class="o">:</span><span class="w"> </span><span class="m">7</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">treatment</span><span class="w">   </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">group</span><span class="w">       </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"placebo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"placebo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"p…
+$ dose        &lt;chr&gt; "</span><span class="n">high</span><span class="s2">", "</span><span class="n">high</span><span class="s2">", "</span><span class="n">high</span><span class="s2">", …
+$ participant &lt;chr&gt; "</span><span class="n">p01</span><span class="s2">", "</span><span class="n">p02</span><span class="s2">", "</span><span class="n">p03</span><span class="s2">", "</span><span class="n">p0</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">age</span><span class="w">         </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="m">32</span><span class="p">,</span><span class="w"> </span><span class="m">37</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">sex</span><span class="w">         </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">femal</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">score</span><span class="w">       </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="err">…</span><span class="w">
+</span></code></pre></div></div>
+
+<p>二要因分散分析の結果を描きたかったので、今回はgroupとdoseを独立変数、scoreを従属変数とした棒グラフを作成していきます。</p>
+
+<h4 id="create">Create</h4>
+
+<p>それでは、<code class="language-plaintext highlighter-rouge">tidyplot()</code>でプロットを作成します。<br />
+<code class="language-plaintext highlighter-rouge">tidyplots</code>で作成したグラフはやや小さかったので、ここでは大きさを調整しています。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="add">Add</h4>
+
+<p>続いて、<code class="language-plaintext highlighter-rouge">add_*()</code>でグラフに指定した要素を加えます。<br />
+今回は棒グラフに標準誤差のエラーバーを付けたいので、<code class="language-plaintext highlighter-rouge">add_mean_bar()</code>と<code class="language-plaintext highlighter-rouge">add_sem_bar()</code>を使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="adjust">Adjust</h4>
+
+<p><code class="language-plaintext highlighter-rouge">adjust_*()</code>で作成したグラフを調整することができます。<br />
+y軸の名前（<code class="language-plaintext highlighter-rouge">adjust_y_axis_title()</code>）と範囲（<code class="language-plaintext highlighter-rouge">adjust_y_axis()</code>）、フォントサイズ（<code class="language-plaintext highlighter-rouge">adjust_font()</code>）と条件ごとの色（<code class="language-plaintext highlighter-rouge">adjust_colors()</code>）を指定しましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="rename">Rename</h4>
+
+<p><code class="language-plaintext highlighter-rouge">rename_*()</code>で各条件の名前を変えてみます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="remove">Remove</h4>
+
+<p>グラフに不要な要素は<code class="language-plaintext highlighter-rouge">remove_*()</code>で取り除きます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># remove</span><span class="w">
+  </span><span class="n">remove_x_axis_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_x_axis_ticks</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_legend_title</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="helpers">Helpers</h4>
+
+<p><code class="language-plaintext highlighter-rouge">tidyplots</code>に搭載されていない（あるいは私が見つけれなかった）要素の調整は、<code class="language-plaintext highlighter-rouge">add()</code>で<code class="language-plaintext highlighter-rouge">ggplot2</code>の関数を使用します。ここでは<code class="language-plaintext highlighter-rouge">ggplot2::theme()</code>を用いています。<br />
+ちなみに、「これを使うのなら最初から<code class="language-plaintext highlighter-rouge">ggplot2</code>でよくない？」はなしです。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># remove</span><span class="w">
+  </span><span class="n">remove_x_axis_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_x_axis_ticks</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_legend_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add</span><span class="p">(</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w">
+            </span><span class="n">legend.justification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w">
+            </span><span class="n">axis.title.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w">
+            </span><span class="n">axis.text.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="output">Output</h4>
+
+<p>グラフを保存するときは<code class="language-plaintext highlighter-rouge">save_plot()</code>を使用します。</p>
+
+<p>以下のコードでファイル名（Figureとします）を指定して、コードの最後に添付しましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># save</span><span class="w">
+  </span><span class="n">save_plot</span><span class="p">(</span><span class="s2">"Figure.pdf"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>今回は<code class="language-plaintext highlighter-rouge">tidyplots</code>を使用して棒グラフを作成してみました。</p>
+
+<p><code class="language-plaintext highlighter-rouge">tidyplots</code>の良い点としては、以下の点が挙げられると思います。</p>
+
+<ul>
+  <li>パイプ演算子を使用して、データから直接グラフを作成できる点</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code>、<code class="language-plaintext highlighter-rouge">adjust</code>、<code class="language-plaintext highlighter-rouge">remove</code>など関数が直観的に分かりやすい点</li>
+  <li>あまり細かい調整をせずに見やすいグラフを作れる点</li>
+</ul>
+
+<p>やる気があれば他のグラフでも試してみようかなと思います。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#R</span>
+          
+            <span class="tag-badge">#tidyplots</span>
+          
+            <span class="tag-badge">#棒グラフ</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+      
+        <a href="/r/20241221/2/" class="next-post">Rの演算子について &rarr;</a>
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>

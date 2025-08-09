@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoteroで論文を管理する - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">Zoteroで論文を管理する</h1>
+    <div class="post-meta">
+      <span class="post-date">2025年01月20日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/research/">研究</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <p>論文を管理する方法を考え直した方が良いと思ったので，論文管理ソフトのZoteroを使ってみることにしました。本稿はその備忘録となります。</p>
+
+<h3 id="インストールアカウントの作成">インストール・アカウントの作成</h3>
+
+<p><a href="https://www.zotero.org/">Zoteroの公式サイト</a>からインストールとアカウントの作成を行います。</p>
+
+<h3 id="初期設定">初期設定</h3>
+
+<p>まず，「編集」&gt;「設定」から初期設定を行います。</p>
+
+<h4 id="一般">一般</h4>
+
+<ul>
+  <li>「ファイルの取り扱い」&gt;「ウェブページからアイテムを作成するときに自動的にスナップショットを作成する」のチェックを外す。</li>
+  <li>「各種設定」&gt;「キーワードと件名標目を含むアイテムに自動的にタグを付ける」のチェックを外す。</li>
+</ul>
+
+<h4 id="同期">同期</h4>
+
+<ul>
+  <li>「データの同期」から先ほど作成したアカウントを同期する。</li>
+  <li>「ファイルの同期」のチェックを外す。</li>
+</ul>
+
+<h4 id="詳細">詳細</h4>
+
+<ul>
+  <li>「リンク付き添付ファイルの基本ディレクトリ」&gt;「基本ディレクトリ」&gt;「選択」からクラウドのストレージにパスを指定する。</li>
+</ul>
+
+<h3 id="zotmoovでクラウド管理する">ZotMoovでクラウド管理する</h3>
+
+<p>クラウドのストレージにパスを指定するために<a href="https://github.com/wileyyugioh/zotmoov">ZotMoov</a>を使用します。</p>
+
+<p>まず，Githubページの「Installation」の「Download the latest release here」から最新のxpiファイルをダウンロードします。</p>
+
+<p>続いて，Zoteroの「ツール」&gt;「Plugin」の「Manage Your Plugins」の部分にドラッグ&amp;ドロップすることでインストールします。</p>
+
+<p>以下のように表示されたらインストール完了です。</p>
+
+<p>再び「編集」&gt;「設定」を開き，ZotMoovの設定をします。</p>
+
+<ul>
+  <li>「Directory to Move/Copy Files To」&gt;「選択」から，先ほど「同期」で選択したものと同様のストレージへのパスを指定する。</li>
+  <li>「Other Settings」の項目にすべてチェックを入れる。</li>
+</ul>
+
+<h3 id="noteroでnotionと同期する">NoteroでNotionと同期する</h3>
+
+<p>ZoteroとNotionを同期するために<a href="https://github.com/dvanoni/notero">Notero</a>を使用します。</p>
+
+<p>先ほどと同様の手順でインストールしましょう。</p>
+
+<p>続いて，「編集」&gt;「設定」からNotionとの同期を行います。</p>
+
+<ul>
+  <li>「Notion Connection」&gt;「Connect to Notion」から使用するデータベースを選択する。</li>
+</ul>
+
+<h3 id="better-bibtexで日本語文献の引用キーを設定する">Better BibTexで日本語文献の引用キーを設定する</h3>
+
+<p>日本語文献のCitation Keyを生成するために<a href="https://github.com/retorquere/zotero-better-bibtex">Better BibTex</a>を使用します。</p>
+
+<p>こちらも最新版をインストールします。</p>
+
+<p>続いて，「編集」&gt;「設定」からBetter BibTexの設定をします。</p>
+
+<ul>
+  <li>「Citation keys」&gt;「Citation key formula」で使用したい形式の引用キーを設定する。私は下で示す例のようにしました。</li>
+  <li>「Citation keys」の「Force citation key to plain text」のチェックを外す。</li>
+</ul>
+
+<pre><code class="language-zotero">auth + "-" + year + "-" + title.ideographs.select(1,3).ascii.len('&gt;=', 10).capitalize | auth + "-" + year + "-" + title.substring(1,10)
+</code></pre>
+
+<h3 id="感想">感想</h3>
+
+<p>今回の記事では</p>
+
+<ul>
+  <li>Zoteroのインストール</li>
+  <li>クラウド管理の設定</li>
+  <li>Notionとの同期</li>
+  <li>引用キーの設定</li>
+</ul>
+
+<p>の4つをやってみました。</p>
+
+<p>初めて使うため何か不備等があるかもしれません。もしあった場合にはあとで修正・更新することにします。使用感も追々報告します。</p>
+
+<h3 id="参考記事">参考記事</h3>
+
+<ul>
+  <li><a href="https://plaza.umin.ac.jp/shoei05/index.php/2025/01/03/2706/">研究者のためのzoteroセットアップ(Zotero7版)</a></li>
+  <li><a href="https://qiita.com/shimohara7192/items/5451278a5defc382b3c2">研究効率を爆上げ．論文管理ツールZotero！</a></li>
+  <li><a href="https://qiita.com/shiro_takeda/items/dfb857e69aa8ed2cc977">日本語文献用のBetter BibTeXの引用キー（citation key）の設定</a></li>
+  <li><a href="https://obsica.com/zotero-citation-key/">Zoteroで日本語のCitation Keyを設定する</a></li>
+</ul>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#Better BibTex for Zotero</span>
+          
+            <span class="tag-badge">#Notero</span>
+          
+            <span class="tag-badge">#Zotero</span>
+          
+            <span class="tag-badge">#論文管理</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+        <a href="/r/20241224/4/" class="prev-post">&larr; tidyverseって結局何ができるの？</a>
+      
+      
+        <a href="/statistics/20250808/7/" class="next-post">確率分布viewer &rarr;</a>
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>

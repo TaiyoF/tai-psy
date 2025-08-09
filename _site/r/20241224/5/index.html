@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lavaanguiでパス図を描く - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">lavaanguiでパス図を描く</h1>
+    <div class="post-meta">
+      <span class="post-date">2024年12月24日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/r/">R</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <p><a href="https://github.com/karchjd/lavaangui">lavaangui</a>とは、lavaanで作成したモデルをパス図として出力するためのパッケージです。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<p>CRANで公開されているので、<code class="language-plaintext highlighter-rouge">install.packages()</code>でインストールできます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"lavaangui"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="使用するパッケージ">使用するパッケージ</h3>
+
+<p>今回使用するパッケージはlavaanとlavaanguiです。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">lavaan</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lavaangui</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="使用するデータ">使用するデータ</h3>
+
+<p>lavaanパッケージの<code class="language-plaintext highlighter-rouge">HolzingerSwineford1939</code>を使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">HolzingerSwineford1939</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lavaan"</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">HolzingerSwineford1939</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>今回はx1-x9の9変数を使用するので、それ以外の変数を削除して使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">HolzingerSwineford1939</span><span class="p">[,</span><span class="w"> </span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="基本的な使い方">基本的な使い方</h3>
+
+<p>まずはlavaanでモデルを作成します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"
+  visual  =~ 1*x1 + x2 + x3
+  textual =~ 1*x4 + x5 + x6
+  speed   =~ 1*x7 + x8 + x9
+"</span><span class="w">
+
+</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cfa</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>次に、<code class="language-plaintext highlighter-rouge">lavaangui()</code>でGUIを起動します。</p>
+
+<p><code class="language-plaintext highlighter-rouge">fit</code>で<code class="language-plaintext highlighter-rouge">lavaan()</code>, <code class="language-plaintext highlighter-rouge">sem()</code>, <code class="language-plaintext highlighter-rouge">cfa()</code>のいずれかによって作成したモデルを指定します。なお、<code class="language-plaintext highlighter-rouge">fit</code>を指定しない場合、空白のキャンパスが表示されます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lavaangui</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>あるいは、<code class="language-plaintext highlighter-rouge">plot_lavaan()</code>で出力することもできます。</p>
+
+<p><code class="language-plaintext highlighter-rouge">fit</code>でlavaanのmodelを指定し、<code class="language-plaintext highlighter-rouge">where</code>でパス図を表示する場所を指定します。デフォルト値の<code class="language-plaintext highlighter-rouge">gadget</code>ではRstudioで表示し、<code class="language-plaintext highlighter-rouge">browser</code>を指定するとブラウザで表示されます。</p>
+
+<p>ブラウザ版は先ほどと同じなので、ここでは<code class="language-plaintext highlighter-rouge">gadget</code>を指定します（何も指定しなくても構いません）。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_lavaan</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gadget"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#lavaan</span>
+          
+            <span class="tag-badge">#lavaangui</span>
+          
+            <span class="tag-badge">#R</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+        <a href="/r/20241222/3/" class="prev-post">&larr; qualtRicsでデータを読み込む</a>
+      
+      
+        <a href="/r/20241224/4/" class="next-post">tidyverseって結局何ができるの？ &rarr;</a>
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>

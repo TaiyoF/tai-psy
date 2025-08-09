@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/tai-psy/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/tai-psy/" rel="alternate" type="text/html" /><updated>2025-08-09T20:15:54+09:00</updated><id>http://localhost:4000/tai-psy/feed.xml</id><title type="html">Taiyo Fujita</title><subtitle>本ページは　大阪大学大学院人間科学研究科社会心理学研究室　藤田太陽　のWebページです。</subtitle><entry><title type="html">確率分布viewer</title><link href="http://localhost:4000/tai-psy/statistics/20250808/7/" rel="alternate" type="text/html" title="確率分布viewer" /><published>2025-08-08T03:19:46+09:00</published><updated>2025-08-08T03:19:46+09:00</updated><id>http://localhost:4000/tai-psy/statistics/20250808/7</id><content type="html" xml:base="http://localhost:4000/tai-psy/statistics/20250808/7/"><![CDATA[<!-- Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- MathJax for beautiful formulas -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, svg: { fontCache: 'global' } };
+  </script>
+
+<script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<!-- Probability viewer specific styles -->
+<link rel="stylesheet" href="/tai-psy/assets/css/probability-viewer.css" />
+
+<!-- スタイルは site 全体の style.css に統合済み -->
+
+<div class="probability-viewer">
+    <!-- 単一ビュー（PDF） -->
+
+    <div class="viewer-grid">
+        <!-- 左：操作パネル -->
+        <div class="panel panel-left" id="control-panel">
+            <div class="panel-header"><h3>操作</h3></div>
+
+            <div class="panel-subtitle">パラメータ設定</div>
+            <div id="parameter-controls"></div>
+
+            <div class="panel-subtitle">確率計算</div>
+            <div class="probability-head"><div id="probability-badge" class="probability-badge" aria-live="polite"></div></div>
+            <div id="probability-controls" class="probability-controls"></div>
+
+            <div class="panel-subtitle">統計量</div>
+            <div id="detailed-stats"></div>
+
+            <div class="panel-subtitle">アクション</div>
+            <div class="quick-actions actions-inline">
+                <button id="reset-btn" class="action-btn">リセット</button>
+                <button id="export-btn" class="action-btn">エクスポート</button>
+            </div>
+        </div>
+
+        <!-- 右：表示パネル -->
+        <div class="panel panel-right" id="display-panel">
+            <div class="panel-header">
+                <h3 id="plot-title">表示</h3>
+            </div>
+
+            <!-- 分布選択（上） -->
+            <div class="control-group control-top">
+                <label for="dist-selector">分布を選択</label>
+                <select id="dist-selector" class="modern-select">
+                    <option value="normal">正規分布 (Normal Distribution)</option>
+                    <option value="binomial">二項分布 (Binomial Distribution)</option>
+                    <option value="chi-squared">カイ二乗分布 (Chi-squared Distribution)</option>
+                    <option value="poisson">ポアソン分布 (Poisson Distribution)</option>
+                    <option value="exponential">指数分布 (Exponential Distribution)</option>
+                    <option value="uniform">一様分布 (Uniform Distribution)</option>
+                    <option value="gamma">ガンマ分布 (Gamma Distribution)</option>
+                </select>
+            </div>
+
+            <!-- 分布の説明（選択の下） -->
+            <div id="info-panel" class="info-panel info-top"></div>
+
+            <!-- 図 -->
+            <div id="plot" class="plot-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- 確率分布ビューアのスクリプト -->
+<script src="/tai-psy/assets/js/probability-viewer.js"></script>]]></content><author><name></name></author><category term="statistics" /><category term="確率分布" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Zoteroで論文を管理する</title><link href="http://localhost:4000/tai-psy/research/20250120/6/" rel="alternate" type="text/html" title="Zoteroで論文を管理する" /><published>2025-01-20T06:54:13+09:00</published><updated>2025-01-20T06:54:13+09:00</updated><id>http://localhost:4000/tai-psy/research/20250120/6</id><content type="html" xml:base="http://localhost:4000/tai-psy/research/20250120/6/"><![CDATA[<p>論文を管理する方法を考え直した方が良いと思ったので，論文管理ソフトのZoteroを使ってみることにしました。本稿はその備忘録となります。</p>
+
+<h3 id="インストールアカウントの作成">インストール・アカウントの作成</h3>
+
+<p><a href="https://www.zotero.org/">Zoteroの公式サイト</a>からインストールとアカウントの作成を行います。</p>
+
+<h3 id="初期設定">初期設定</h3>
+
+<p>まず，「編集」&gt;「設定」から初期設定を行います。</p>
+
+<h4 id="一般">一般</h4>
+
+<ul>
+  <li>「ファイルの取り扱い」&gt;「ウェブページからアイテムを作成するときに自動的にスナップショットを作成する」のチェックを外す。</li>
+  <li>「各種設定」&gt;「キーワードと件名標目を含むアイテムに自動的にタグを付ける」のチェックを外す。</li>
+</ul>
+
+<h4 id="同期">同期</h4>
+
+<ul>
+  <li>「データの同期」から先ほど作成したアカウントを同期する。</li>
+  <li>「ファイルの同期」のチェックを外す。</li>
+</ul>
+
+<h4 id="詳細">詳細</h4>
+
+<ul>
+  <li>「リンク付き添付ファイルの基本ディレクトリ」&gt;「基本ディレクトリ」&gt;「選択」からクラウドのストレージにパスを指定する。</li>
+</ul>
+
+<h3 id="zotmoovでクラウド管理する">ZotMoovでクラウド管理する</h3>
+
+<p>クラウドのストレージにパスを指定するために<a href="https://github.com/wileyyugioh/zotmoov">ZotMoov</a>を使用します。</p>
+
+<p>まず，Githubページの「Installation」の「Download the latest release here」から最新のxpiファイルをダウンロードします。</p>
+
+<p>続いて，Zoteroの「ツール」&gt;「Plugin」の「Manage Your Plugins」の部分にドラッグ&amp;ドロップすることでインストールします。</p>
+
+<p>以下のように表示されたらインストール完了です。</p>
+
+<p>再び「編集」&gt;「設定」を開き，ZotMoovの設定をします。</p>
+
+<ul>
+  <li>「Directory to Move/Copy Files To」&gt;「選択」から，先ほど「同期」で選択したものと同様のストレージへのパスを指定する。</li>
+  <li>「Other Settings」の項目にすべてチェックを入れる。</li>
+</ul>
+
+<h3 id="noteroでnotionと同期する">NoteroでNotionと同期する</h3>
+
+<p>ZoteroとNotionを同期するために<a href="https://github.com/dvanoni/notero">Notero</a>を使用します。</p>
+
+<p>先ほどと同様の手順でインストールしましょう。</p>
+
+<p>続いて，「編集」&gt;「設定」からNotionとの同期を行います。</p>
+
+<ul>
+  <li>「Notion Connection」&gt;「Connect to Notion」から使用するデータベースを選択する。</li>
+</ul>
+
+<h3 id="better-bibtexで日本語文献の引用キーを設定する">Better BibTexで日本語文献の引用キーを設定する</h3>
+
+<p>日本語文献のCitation Keyを生成するために<a href="https://github.com/retorquere/zotero-better-bibtex">Better BibTex</a>を使用します。</p>
+
+<p>こちらも最新版をインストールします。</p>
+
+<p>続いて，「編集」&gt;「設定」からBetter BibTexの設定をします。</p>
+
+<ul>
+  <li>「Citation keys」&gt;「Citation key formula」で使用したい形式の引用キーを設定する。私は下で示す例のようにしました。</li>
+  <li>「Citation keys」の「Force citation key to plain text」のチェックを外す。</li>
+</ul>
+
+<pre><code class="language-zotero">auth + "-" + year + "-" + title.ideographs.select(1,3).ascii.len('&gt;=', 10).capitalize | auth + "-" + year + "-" + title.substring(1,10)
+</code></pre>
+
+<h3 id="感想">感想</h3>
+
+<p>今回の記事では</p>
+
+<ul>
+  <li>Zoteroのインストール</li>
+  <li>クラウド管理の設定</li>
+  <li>Notionとの同期</li>
+  <li>引用キーの設定</li>
+</ul>
+
+<p>の4つをやってみました。</p>
+
+<p>初めて使うため何か不備等があるかもしれません。もしあった場合にはあとで修正・更新することにします。使用感も追々報告します。</p>
+
+<h3 id="参考記事">参考記事</h3>
+
+<ul>
+  <li><a href="https://plaza.umin.ac.jp/shoei05/index.php/2025/01/03/2706/">研究者のためのzoteroセットアップ(Zotero7版)</a></li>
+  <li><a href="https://qiita.com/shimohara7192/items/5451278a5defc382b3c2">研究効率を爆上げ．論文管理ツールZotero！</a></li>
+  <li><a href="https://qiita.com/shiro_takeda/items/dfb857e69aa8ed2cc977">日本語文献用のBetter BibTeXの引用キー（citation key）の設定</a></li>
+  <li><a href="https://obsica.com/zotero-citation-key/">Zoteroで日本語のCitation Keyを設定する</a></li>
+</ul>]]></content><author><name></name></author><category term="research" /><category term="Better BibTex for Zotero" /><category term="Notero" /><category term="Zotero" /><category term="論文管理" /><summary type="html"><![CDATA[論文を管理する方法を考え直した方が良いと思ったので，論文管理ソフトのZoteroを使ってみることにしました。本稿はその備忘録となります。]]></summary></entry><entry><title type="html">tidyverseって結局何ができるの？</title><link href="http://localhost:4000/tai-psy/r/20241224/4/" rel="alternate" type="text/html" title="tidyverseって結局何ができるの？" /><published>2024-12-24T21:09:53+09:00</published><updated>2024-12-24T21:09:53+09:00</updated><id>http://localhost:4000/tai-psy/r/20241224/4</id><content type="html" xml:base="http://localhost:4000/tai-psy/r/20241224/4/"><![CDATA[<p><a href="https://tidyverse.tidyverse.org/"><code class="language-plaintext highlighter-rouge">tidyverse</code></a>は、Rでデータ分析をする際に必ずと言っても良いほど用いられるパッケージ群です。実際、私もよく使います。</p>
+
+<p>一方で、<code class="language-plaintext highlighter-rouge">tidyverse</code>で一体何ができるのかを体系的に学んだことが無いなと思ったので、本記事では<code class="language-plaintext highlighter-rouge">tidyverse</code>パッケージについて整理してみようと思います。</p>
+
+<p>(目次が欲しい。)</p>
+
+<h3 id="tidyverseとは"><code class="language-plaintext highlighter-rouge">tidyverse</code>とは</h3>
+
+<h3 id="インストール">インストール</h3>
+
+<p>インストールはCRANから</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.package</span><span class="p">(</span><span class="s2">"tidyverse"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="読み込み">読み込み</h3>
+
+<p>パッケージを読み込むと、以下のようにインストールされたパッケージと他のパッケージと衝突する関数が出力されます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="err">──</span><span class="w"> </span><span class="n">Attaching</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="err">──────────────────</span><span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="m">2.0.0</span><span class="w"> </span><span class="err">──</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">dplyr</span><span class="w">     </span><span class="m">1.1.4</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">readr</span><span class="w">     </span><span class="m">2.1.5</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">forcats</span><span class="w">   </span><span class="m">1.0.0</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">stringr</span><span class="w">   </span><span class="m">1.5.1</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">ggplot2</span><span class="w">   </span><span class="m">3.5.1</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">lubridate</span><span class="w"> </span><span class="m">1.9.4</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">tibble</span><span class="w">    </span><span class="m">3.2.1</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">purrr</span><span class="w">     </span><span class="m">1.0.2</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">tidyr</span><span class="w">     </span><span class="m">1.3.1</span><span class="w">
+</span><span class="err">──</span><span class="w"> </span><span class="n">Conflicts</span><span class="w"> </span><span class="err">────────────────────────────────────</span><span class="w"> </span><span class="n">tidyverse_conflicts</span><span class="p">()</span><span class="w"> </span><span class="err">──</span><span class="w">
+</span><span class="err">✖</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">()</span><span class="w"> </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="n">filter</span><span class="p">()</span><span class="w">
+</span><span class="err">✖</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">lag</span><span class="p">()</span><span class="w">    </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="n">lag</span><span class="p">()</span><span class="w">
+</span><span class="n">ℹ</span><span class="w"> </span><span class="n">Use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conflicted</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">force</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">conflicts</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">errors</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="パッケージ一覧">パッケージ一覧</h4>
+
+<p>コアパッケージとして以下の9つがあります。</p>
+
+<ul>
+  <li>ggplot2：データの視覚化</li>
+  <li>dplyr：データの操作</li>
+  <li>tidyr：データの整理</li>
+  <li>readr：データのインポート</li>
+  <li>purrr：関数プログラミング</li>
+  <li>tibble：データの形式</li>
+  <li>stringr：文字列</li>
+  <li>forcats：要因</li>
+  <li>lubridate：日付・時刻</li>
+</ul>
+
+<p>コアパッケージ以外にも以下のパッケージが同時にインストールされていますが、ここではその紹介だけにとどめておきます。</p>
+
+<h3 id="ggplot2">ggplot2</h3>
+
+<h4 id="ggplot2とは">ggplot2とは</h4>
+
+<h4 id="基本的な使い方">基本的な使い方</h4>
+
+<p>まずはggplot2のサンプルデータである<code class="language-plaintext highlighter-rouge">mpg</code>を使用して散布図を描きます。<code class="language-plaintext highlighter-rouge">ggplot()</code>を使用してキャンパスを作成し、<code class="language-plaintext highlighter-rouge">geom_point()</code>でその上に散布図を描きます。</p>
+
+<p>ggplot2では以下に示すように、<code class="language-plaintext highlighter-rouge">+</code>を用いて情報を追加します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="aesによる調整">aes()による調整</h4>
+
+<p><code class="language-plaintext highlighter-rouge">aes()</code>では、以下のような要素を指定できます。</p>
+
+<ul>
+  <li>変数の指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code></li>
+      <li><code class="language-plaintext highlighter-rouge">xmin</code>, <code class="language-plaintext highlighter-rouge">xmax</code>, <code class="language-plaintext highlighter-rouge">xend</code>, <code class="language-plaintext highlighter-rouge">ymin</code>, <code class="language-plaintext highlighter-rouge">ymax</code>, <code class="language-plaintext highlighter-rouge">yend</code></li>
+    </ul>
+  </li>
+  <li>色の指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">color</code>：点・線の色の指定。条件ごとの色分け</li>
+      <li><code class="language-plaintext highlighter-rouge">fill</code>：塗りつぶしの色の指定</li>
+      <li><code class="language-plaintext highlighter-rouge">alpha</code>：不透明度を指定</li>
+    </ul>
+  </li>
+  <li>大きさの指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">size</code>：点の大きさ、線の太さを指定</li>
+      <li><code class="language-plaintext highlighter-rouge">shape</code>：点の形を指定</li>
+      <li><code class="language-plaintext highlighter-rouge">linetype</code>：線の種類を指定</li>
+    </ul>
+  </li>
+  <li>単にグループ分けする
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">group</code>：色や形を保持して条件分け</li>
+    </ul>
+  </li>
+</ul>
+
+<p>例えば、<code class="language-plaintext highlighter-rouge">color = drv</code>を指定すると次のようになります。</p>
+
+<h4 id="グラフの種類">グラフの種類</h4>
+
+<p>ggplot2では、<code class="language-plaintext highlighter-rouge">geom_**()</code>を用いてさまざまなグラフを作成できます。以下にその一覧を示します。</p>
+
+<ul>
+  <li>散布図
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_point()</code></li>
+    </ul>
+  </li>
+  <li>折れ線グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_line()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_path()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_step()</code></li>
+    </ul>
+  </li>
+  <li>面グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_ribbon()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_area()</code></li>
+    </ul>
+  </li>
+  <li>ヒストグラム
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_histogram()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_freqploy()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_density()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_bin2d()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_hex()</code></li>
+    </ul>
+  </li>
+  <li>棒グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_bar()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_col()</code></li>
+    </ul>
+  </li>
+  <li>箱ひげ図
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_box_plot()</code></li>
+    </ul>
+  </li>
+  <li>バイオリンプロット
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_violin()</code></li>
+    </ul>
+  </li>
+  <li>ドットプロット
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_dotplot()</code></li>
+    </ul>
+  </li>
+  <li>ヒートマップ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_tile()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_raster()</code></li>
+    </ul>
+  </li>
+  <li>エラーバー</li>
+  <li>関数</li>
+  <li>回帰直線</li>
+</ul>
+
+<h4 id="グラフの設定">グラフの設定</h4>
+
+<h4 id="themeの設定"><code class="language-plaintext highlighter-rouge">theme()</code>の設定</h4>
+
+<h3 id="dplyr">dplyr</h3>]]></content><author><name></name></author><category term="r" /><category term="R" /><category term="tidyverse" /><summary type="html"><![CDATA[tidyverseは、Rでデータ分析をする際に必ずと言っても良いほど用いられるパッケージ群です。実際、私もよく使います。]]></summary></entry><entry><title type="html">lavaanguiでパス図を描く</title><link href="http://localhost:4000/tai-psy/r/20241224/5/" rel="alternate" type="text/html" title="lavaanguiでパス図を描く" /><published>2024-12-24T20:28:51+09:00</published><updated>2024-12-24T20:28:51+09:00</updated><id>http://localhost:4000/tai-psy/r/20241224/5</id><content type="html" xml:base="http://localhost:4000/tai-psy/r/20241224/5/"><![CDATA[<p><a href="https://github.com/karchjd/lavaangui">lavaangui</a>とは、lavaanで作成したモデルをパス図として出力するためのパッケージです。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<p>CRANで公開されているので、<code class="language-plaintext highlighter-rouge">install.packages()</code>でインストールできます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"lavaangui"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="使用するパッケージ">使用するパッケージ</h3>
+
+<p>今回使用するパッケージはlavaanとlavaanguiです。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">lavaan</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">lavaangui</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="使用するデータ">使用するデータ</h3>
+
+<p>lavaanパッケージの<code class="language-plaintext highlighter-rouge">HolzingerSwineford1939</code>を使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">HolzingerSwineford1939</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lavaan"</span><span class="p">)</span><span class="w">
+</span><span class="n">head</span><span class="p">(</span><span class="n">HolzingerSwineford1939</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>今回はx1-x9の9変数を使用するので、それ以外の変数を削除して使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">HolzingerSwineford1939</span><span class="p">[,</span><span class="w"> </span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)]</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="基本的な使い方">基本的な使い方</h3>
+
+<p>まずはlavaanでモデルを作成します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"
+  visual  =~ 1*x1 + x2 + x3
+  textual =~ 1*x4 + x5 + x6
+  speed   =~ 1*x7 + x8 + x9
+"</span><span class="w">
+
+</span><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cfa</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>次に、<code class="language-plaintext highlighter-rouge">lavaangui()</code>でGUIを起動します。</p>
+
+<p><code class="language-plaintext highlighter-rouge">fit</code>で<code class="language-plaintext highlighter-rouge">lavaan()</code>, <code class="language-plaintext highlighter-rouge">sem()</code>, <code class="language-plaintext highlighter-rouge">cfa()</code>のいずれかによって作成したモデルを指定します。なお、<code class="language-plaintext highlighter-rouge">fit</code>を指定しない場合、空白のキャンパスが表示されます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lavaangui</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>あるいは、<code class="language-plaintext highlighter-rouge">plot_lavaan()</code>で出力することもできます。</p>
+
+<p><code class="language-plaintext highlighter-rouge">fit</code>でlavaanのmodelを指定し、<code class="language-plaintext highlighter-rouge">where</code>でパス図を表示する場所を指定します。デフォルト値の<code class="language-plaintext highlighter-rouge">gadget</code>ではRstudioで表示し、<code class="language-plaintext highlighter-rouge">browser</code>を指定するとブラウザで表示されます。</p>
+
+<p>ブラウザ版は先ほどと同じなので、ここでは<code class="language-plaintext highlighter-rouge">gadget</code>を指定します（何も指定しなくても構いません）。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_lavaan</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span><span class="w"> </span><span class="n">where</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gadget"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="r" /><category term="lavaan" /><category term="lavaangui" /><category term="R" /><summary type="html"><![CDATA[lavaanguiとは、lavaanで作成したモデルをパス図として出力するためのパッケージです。]]></summary></entry><entry><title type="html">qualtRicsでデータを読み込む</title><link href="http://localhost:4000/tai-psy/r/20241222/3/" rel="alternate" type="text/html" title="qualtRicsでデータを読み込む" /><published>2024-12-22T04:28:36+09:00</published><updated>2024-12-22T04:28:36+09:00</updated><id>http://localhost:4000/tai-psy/r/20241222/3</id><content type="html" xml:base="http://localhost:4000/tai-psy/r/20241222/3/"><![CDATA[<p>これまでQualtircsで取得したデータを分析するとき、Rで読み込む段階で少し前処理を行っていました。しかし、raw dataは本来加工するべきではありませんし、そもそも一々開いて処理していては面倒極まりないです。</p>
+
+<p><a href="https://github.com/ropensci/qualtRics">qualtRics</a>を使うことでこのような前処理をなくすことができるというのを今更ながら知ったので、その方法を自分用にメモしておこうと思います。</p>
+
+<p>ちなみに、私はQualtriqsのAPIキーを取得できないのでデータのエクスポートは自分でやる方法を用いていますが、APIを取得できるのならば直接エクスポートせずにする方法もあるらしいです。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<p><code class="language-plaintext highlighter-rouge">install.packages()</code>でCRANからインストールします。<br />
+そのままパッケージの読み込みましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"qualtRics"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">library</span><span class="p">(</span><span class="n">qualtRics</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>以下のようにgithubからもインストールできます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"ropensci/qualtRics"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="データのエクスポート">データのエクスポート</h3>
+
+<p>Qualtriqsの「エクスポートとインポート」から「データをエクスポート」でCSVファイルを数値で指定してダウンロードします。</p>
+
+<h3 id="データのインポート">データのインポート</h3>
+
+<p>続いて、<code class="language-plaintext highlighter-rouge">read_survey()</code>を用いて読み込みます。<br />
+ここではファイル名を今日の日付（20241222）としています。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_survey</span><span class="p">(</span><span class="s2">"20241222.csv"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>これで終わりです。簡単ですね。</p>
+
+<h3 id="感想">感想</h3>
+
+<p>完全に無知だった（これまでの方法を疑わなかった）ので、このように前処理を単純化できることに驚きました。おそらく多くの人にとっては当たり前の方法だったと思うので、本当に今更なことを言っているなと思われたことでしょう。それでもこの方法は早めに知れて良かったと思うので、メモに残しておくことにしました。</p>
+
+<p>なお、<code class="language-plaintext highlighter-rouge">read.csv()</code>とは違って<code class="language-plaintext highlighter-rouge">fileEncoding</code>に対応していなさそうなので、回答に日本語等の文字が含まれている場合は普通にTSVファイルで出力する方法の方がよさそうです。</p>
+
+<p>また、データのインポートするときに、私は各変数の項目の説明を表示する必要もないかなと思ったので、以下のようにadd_var_labelsの指定もして使用すると思います。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_survey</span><span class="p">(</span><span class="s2">"20241222.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">add_var_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="r" /><category term="R" /><category term="qualtRics" /><summary type="html"><![CDATA[これまでQualtircsで取得したデータを分析するとき、Rで読み込む段階で少し前処理を行っていました。しかし、raw dataは本来加工するべきではありませんし、そもそも一々開いて処理していては面倒極まりないです。]]></summary></entry><entry><title type="html">Rの演算子について</title><link href="http://localhost:4000/tai-psy/r/20241221/2/" rel="alternate" type="text/html" title="Rの演算子について" /><published>2024-12-21T02:58:51+09:00</published><updated>2024-12-21T02:58:51+09:00</updated><id>http://localhost:4000/tai-psy/r/20241221/2</id><content type="html" xml:base="http://localhost:4000/tai-psy/r/20241221/2/"><![CDATA[<p>今回はRで使用する演算子について整理します。</p>
+
+<h3 id="演算子とは">演算子とは</h3>
+
+<p>演算子とは、計算や処理を表現するための記号のことです。</p>
+
+<h3 id="演算子の種類">演算子の種類</h3>
+
+<p>Rで使用される演算子には、算術・比較・論理・代入・その他に区分されます。</p>
+
+<h4 id="算術演算子">算術演算子</h4>
+
+<p>算術演算子とは、四則演算などの数値計算を行うための演算子のことです。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td>加算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>減算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td>乗算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td>除算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">^</code></td>
+      <td>べき乗</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%%</code></td>
+      <td>整数除算（剰余）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%/%</code></td>
+      <td>整数除算（商）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="比較演算子">比較演算子</h4>
+
+<p>比較演算子とは、2つの値を比較しその結果を論理値として返す演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">==</code></td>
+      <td>等しい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!=</code></td>
+      <td>等しくない</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td>より小さい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td>より大きい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;=</code></td>
+      <td>以下</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;=</code></td>
+      <td>以上</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="論理演算子">論理演算子</h4>
+
+<p>論理演算子とは、論理値を操作して新しい論理値を生成する演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td>要素ごとの論理積（<code class="language-plaintext highlighter-rouge">AND</code>）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td>論理積（<code class="language-plaintext highlighter-rouge">AND</code>）：最初の要素のみ評価</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|</code></td>
+      <td>要素ごとの論理和（<code class="language-plaintext highlighter-rouge">OR</code>）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|\|</code></td>
+      <td>論理和（<code class="language-plaintext highlighter-rouge">OR</code>）：最初の要素のみ評価</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td>論理否定（<code class="language-plaintext highlighter-rouge">NOT</code>）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="代入演算子">代入演算子</h4>
+
+<p>代入演算子は、値やオブジェクトに変数を割り当てるために使用する演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;-</code></td>
+      <td>左代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-&gt;</code></td>
+      <td>右代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">=</code></td>
+      <td>左代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;&lt;-</code></td>
+      <td>グローバル代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-&gt;&gt;</code></td>
+      <td>グローバル右代入</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="代入演算子の特徴">代入演算子の特徴</h5>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">`=`</code>は関数の引数指定にも使用されるため，<code class="language-plaintext highlighter-rouge">&lt;-</code>の方が推奨されます。</li>
+  <li><code class="language-plaintext highlighter-rouge">`&lt;&lt;-`</code>はグローバル環境に直接代入するための演算子です。</li>
+</ul>
+
+<h4 id="その他の演算子">その他の演算子</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%*%</code></td>
+      <td>内積・行列の積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%in%</code></td>
+      <td>外積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%o%</code></td>
+      <td>クロネッカー積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%x%</code></td>
+      <td>ベクトル内の要素の存在確認</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%&gt;%</code></td>
+      <td>パイプ演算子（magrittr）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|&gt;</code></td>
+      <td>パイプ演算子（R 4.1以降）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%&lt;&gt;%</code></td>
+      <td>代入機能付きパイプ演算子</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%T&gt;%</code></td>
+      <td>Tee演算子（左側の値を返す）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">:</code></td>
+      <td>シーケンスを生成</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">**::**</code></td>
+      <td>公開オブジェクトにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">:::</code></td>
+      <td>非公開オブジェクトにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">$</code></td>
+      <td>リストやデータフレームの要素にアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">@</code></td>
+      <td>S4クラスオブジェクトのスロットにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[]</code></td>
+      <td>複数の要素を、元と同じ型で抽出</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[]]</code></td>
+      <td>単一の要素のみを抽出</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>符号を逆転</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">~</code></td>
+      <td>モデル式を作成</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="演算子の優先順位">演算子の優先順位</h3>
+
+<p>Rにおける演算子の優先順位は以下の通りです。</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">::</code> <code class="language-plaintext highlighter-rouge">:::</code>　名前空間へのアクセス</li>
+  <li><code class="language-plaintext highlighter-rouge">$</code> <code class="language-plaintext highlighter-rouge">@</code>　要素へのアクセス</li>
+  <li><code class="language-plaintext highlighter-rouge">[</code> <code class="language-plaintext highlighter-rouge">[[</code>　インデックス演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code>　べき乗</li>
+  <li><code class="language-plaintext highlighter-rouge">-</code> <code class="language-plaintext highlighter-rouge">+</code>　単項演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">:</code>　シーケンス演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">%any%</code> <code class="language-plaintext highlighter-rouge">|&gt;</code>　特殊演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code> <code class="language-plaintext highlighter-rouge">/</code>　乗除演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">+</code> <code class="language-plaintext highlighter-rouge">-</code>　加減演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> <code class="language-plaintext highlighter-rouge">&gt;</code> <code class="language-plaintext highlighter-rouge">&lt;=</code> <code class="language-plaintext highlighter-rouge">&gt;=</code> <code class="language-plaintext highlighter-rouge">==</code> <code class="language-plaintext highlighter-rouge">!=</code>　比較演算子（大小・同値関係）</li>
+  <li><code class="language-plaintext highlighter-rouge">!</code>　論理演算子（NOT）</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>　論理演算子（AND）</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> <code class="language-plaintext highlighter-rouge">||</code>　論理演算子（OR）</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code>　チルダ演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">-&gt;</code> <code class="language-plaintext highlighter-rouge">-&gt;&gt;</code>　代入演算子（右代入）</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;-</code> <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code>　代入演算子（左代入）</li>
+  <li><code class="language-plaintext highlighter-rouge">=</code>　代入演算子（左代入）</li>
+</ol>]]></content><author><name></name></author><category term="r" /><category term="R" /><category term="演算子" /><summary type="html"><![CDATA[今回はRで使用する演算子について整理します。]]></summary></entry><entry><title type="html">tidyplotsで棒グラフを作成する</title><link href="http://localhost:4000/tai-psy/r/20241220/1/" rel="alternate" type="text/html" title="tidyplotsで棒グラフを作成する" /><published>2024-12-20T14:29:28+09:00</published><updated>2024-12-20T14:29:28+09:00</updated><id>http://localhost:4000/tai-psy/r/20241220/1</id><content type="html" xml:base="http://localhost:4000/tai-psy/r/20241220/1/"><![CDATA[<p><a href="https://tidyplots.org/">tidyplots</a>を試してみたので、その跡をここに残しておきます。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<p>CRANで公開されているため、<code class="language-plaintext highlighter-rouge">install.packages()</code>でインストールします。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"tidyplots"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>私は使用していませんが、以下のようにgithubからもインストールできます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"jbengler/tidyplots"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="棒グラフの作成">棒グラフの作成</h3>
+
+<h4 id="パッケージの読み込み">パッケージの読み込み</h4>
+
+<p>まずはパッケージを読み込みましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyplots</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="データ">データ</h4>
+
+<p>今回使用するデータは<code class="language-plaintext highlighter-rouge">tidyplots</code>に付属されている<code class="language-plaintext highlighter-rouge">study</code>を使用します。<br />
+中身を確認してみましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">glimpse</span><span class="p">(</span><span class="n">study</span><span class="p">)</span><span class="w">
+</span><span class="n">Rows</span><span class="o">:</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="n">Columns</span><span class="o">:</span><span class="w"> </span><span class="m">7</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">treatment</span><span class="w">   </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A"</span><span class="p">,</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">group</span><span class="w">       </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"placebo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"placebo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"p…
+$ dose        &lt;chr&gt; "</span><span class="n">high</span><span class="s2">", "</span><span class="n">high</span><span class="s2">", "</span><span class="n">high</span><span class="s2">", …
+$ participant &lt;chr&gt; "</span><span class="n">p01</span><span class="s2">", "</span><span class="n">p02</span><span class="s2">", "</span><span class="n">p03</span><span class="s2">", "</span><span class="n">p0</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">age</span><span class="w">         </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="m">32</span><span class="p">,</span><span class="w"> </span><span class="m">37</span><span class="p">,</span><span class="w"> </span><span class="m">24</span><span class="p">,</span><span class="w"> </span><span class="m">23</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">sex</span><span class="w">         </span><span class="o">&lt;</span><span class="n">chr</span><span class="o">&gt;</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w"> </span><span class="err">"</span><span class="n">femal</span><span class="err">…</span><span class="w">
+</span><span class="o">$</span><span class="w"> </span><span class="n">score</span><span class="w">       </span><span class="o">&lt;</span><span class="n">dbl</span><span class="o">&gt;</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="err">…</span><span class="w">
+</span></code></pre></div></div>
+
+<p>二要因分散分析の結果を描きたかったので、今回はgroupとdoseを独立変数、scoreを従属変数とした棒グラフを作成していきます。</p>
+
+<h4 id="create">Create</h4>
+
+<p>それでは、<code class="language-plaintext highlighter-rouge">tidyplot()</code>でプロットを作成します。<br />
+<code class="language-plaintext highlighter-rouge">tidyplots</code>で作成したグラフはやや小さかったので、ここでは大きさを調整しています。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="add">Add</h4>
+
+<p>続いて、<code class="language-plaintext highlighter-rouge">add_*()</code>でグラフに指定した要素を加えます。<br />
+今回は棒グラフに標準誤差のエラーバーを付けたいので、<code class="language-plaintext highlighter-rouge">add_mean_bar()</code>と<code class="language-plaintext highlighter-rouge">add_sem_bar()</code>を使用します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="adjust">Adjust</h4>
+
+<p><code class="language-plaintext highlighter-rouge">adjust_*()</code>で作成したグラフを調整することができます。<br />
+y軸の名前（<code class="language-plaintext highlighter-rouge">adjust_y_axis_title()</code>）と範囲（<code class="language-plaintext highlighter-rouge">adjust_y_axis()</code>）、フォントサイズ（<code class="language-plaintext highlighter-rouge">adjust_font()</code>）と条件ごとの色（<code class="language-plaintext highlighter-rouge">adjust_colors()</code>）を指定しましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="rename">Rename</h4>
+
+<p><code class="language-plaintext highlighter-rouge">rename_*()</code>で各条件の名前を変えてみます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="remove">Remove</h4>
+
+<p>グラフに不要な要素は<code class="language-plaintext highlighter-rouge">remove_*()</code>で取り除きます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># remove</span><span class="w">
+  </span><span class="n">remove_x_axis_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_x_axis_ticks</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_legend_title</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="helpers">Helpers</h4>
+
+<p><code class="language-plaintext highlighter-rouge">tidyplots</code>に搭載されていない（あるいは私が見つけれなかった）要素の調整は、<code class="language-plaintext highlighter-rouge">add()</code>で<code class="language-plaintext highlighter-rouge">ggplot2</code>の関数を使用します。ここでは<code class="language-plaintext highlighter-rouge">ggplot2::theme()</code>を用いています。<br />
+ちなみに、「これを使うのなら最初から<code class="language-plaintext highlighter-rouge">ggplot2</code>でよくない？」はなしです。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">study</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tidyplot</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dose</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add_mean_bar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">add_sem_errorbar</span><span class="p">(</span><span class="n">dodge_width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.9</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># adjust</span><span class="w">
+  </span><span class="n">adjust_y_axis_title</span><span class="p">(</span><span class="s2">"得\n点\n（点）"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_y_axis</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">50</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_font</span><span class="p">(</span><span class="n">fontsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">adjust_colors</span><span class="p">(</span><span class="n">new_colors</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"grey"</span><span class="p">,</span><span class="s2">"grey30"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># rename</span><span class="w">
+  </span><span class="n">rename_x_axis_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"placebo"</span><span class="o">=</span><span class="s2">"対照群"</span><span class="p">,</span><span class="s2">"treatment"</span><span class="o">=</span><span class="s2">"介入群"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">rename_color_labels</span><span class="p">(</span><span class="n">new_names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"high"</span><span class="o">=</span><span class="s2">"低用量"</span><span class="p">,</span><span class="s2">"low"</span><span class="o">=</span><span class="s2">"高用量"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># remove</span><span class="w">
+  </span><span class="n">remove_x_axis_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_x_axis_ticks</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">remove_legend_title</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+</span><span class="c1"># add</span><span class="w">
+  </span><span class="n">add</span><span class="p">(</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w">
+            </span><span class="n">legend.justification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w">
+            </span><span class="n">axis.title.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w">
+            </span><span class="n">axis.text.y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">11</span><span class="p">)))</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="output">Output</h4>
+
+<p>グラフを保存するときは<code class="language-plaintext highlighter-rouge">save_plot()</code>を使用します。</p>
+
+<p>以下のコードでファイル名（Figureとします）を指定して、コードの最後に添付しましょう。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># save</span><span class="w">
+  </span><span class="n">save_plot</span><span class="p">(</span><span class="s2">"Figure.pdf"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>今回は<code class="language-plaintext highlighter-rouge">tidyplots</code>を使用して棒グラフを作成してみました。</p>
+
+<p><code class="language-plaintext highlighter-rouge">tidyplots</code>の良い点としては、以下の点が挙げられると思います。</p>
+
+<ul>
+  <li>パイプ演算子を使用して、データから直接グラフを作成できる点</li>
+  <li><code class="language-plaintext highlighter-rouge">add</code>、<code class="language-plaintext highlighter-rouge">adjust</code>、<code class="language-plaintext highlighter-rouge">remove</code>など関数が直観的に分かりやすい点</li>
+  <li>あまり細かい調整をせずに見やすいグラフを作れる点</li>
+</ul>
+
+<p>やる気があれば他のグラフでも試してみようかなと思います。</p>]]></content><author><name></name></author><category term="r" /><category term="R" /><category term="tidyplots" /><category term="棒グラフ" /><summary type="html"><![CDATA[tidyplotsを試してみたので、その跡をここに残しておきます。]]></summary></entry></feed>

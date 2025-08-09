@@ -1,0 +1,49 @@
+---
+layout: defalt
+---
+
+<article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span class="post-date">{{ page.date | date: "%Y年%m月%d日" }}</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="{% link index.md %}">ホーム</a>
+    <span class="sep">›</span>
+    <a href="{% link column.md %}">コラム</a>
+    {% assign primary_category = page.categories | first %}
+    {% if primary_category %}
+      <span class="sep">›</span>
+      {% capture category_title %}{% case primary_category %}{% when 'r' %}R{% when 'statistics' %}統計学{% when 'research' %}研究{% when 'trivia' %}雑学{% when 'qualtrics' %}Qualtrics{% else %}{{ primary_category }}{% endcase %}{% endcapture %}
+      <a href="{% if primary_category == 'r' %}{% link r.md %}{% elsif primary_category == 'statistics' %}{% link statistics.md %}{% elsif primary_category == 'research' %}{% link research.md %}{% elsif primary_category == 'trivia' %}{% link trivia.md %}{% elsif primary_category == 'qualtrics' %}{% link qualtrics.md %}{% endif %}">{{ category_title | strip }}</a>
+    {% endif %}
+  </nav>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer">
+    {% if page.tags and page.tags.size > 0 %}
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="tag-badge">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+    <nav class="post-navigation">
+      {% if page.previous %}
+        <a href="{{ page.previous.url }}" class="prev-post">&larr; {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url }}" class="next-post">{{ page.next.title }} &rarr;</a>
+      {% endif %}
+    </nav>
+  </footer>
+</article>

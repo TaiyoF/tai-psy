@@ -1,0 +1,14 @@
+{%- assign first = page.url | remove: 'index.html' | remove_first: '/' | split: '/' | first -%}
+{%- if first and page.url != '/' -%}
+  <nav class="breadcrumb">
+    <a href="{% link index.md %}">ホーム</a>
+    {%- if first == 'column' -%}
+      <span class="sep">›</span><span class="current">{{ page.title }}</span>
+    {%- elsif first == 'r' or first == 'statistics' or first == 'research' or first == 'trivia' or first == 'qualtrics' -%}
+      <span class="sep">›</span><a href="{% link column.md %}">コラム</a>
+      <span class="sep">›</span><span class="current">{{ page.title }}</span>
+    {%- else -%}
+      <span class="sep">›</span><span class="current">{{ page.title }}</span>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tidyverseって結局何ができるの？ - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">tidyverseって結局何ができるの？</h1>
+    <div class="post-meta">
+      <span class="post-date">2024年12月24日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/r/">R</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <p><a href="https://tidyverse.tidyverse.org/"><code class="language-plaintext highlighter-rouge">tidyverse</code></a>は、Rでデータ分析をする際に必ずと言っても良いほど用いられるパッケージ群です。実際、私もよく使います。</p>
+
+<p>一方で、<code class="language-plaintext highlighter-rouge">tidyverse</code>で一体何ができるのかを体系的に学んだことが無いなと思ったので、本記事では<code class="language-plaintext highlighter-rouge">tidyverse</code>パッケージについて整理してみようと思います。</p>
+
+<p>(目次が欲しい。)</p>
+
+<h3 id="tidyverseとは"><code class="language-plaintext highlighter-rouge">tidyverse</code>とは</h3>
+
+<h3 id="インストール">インストール</h3>
+
+<p>インストールはCRANから</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.package</span><span class="p">(</span><span class="s2">"tidyverse"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="読み込み">読み込み</h3>
+
+<p>パッケージを読み込むと、以下のようにインストールされたパッケージと他のパッケージと衝突する関数が出力されます。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="err">──</span><span class="w"> </span><span class="n">Attaching</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="n">packages</span><span class="w"> </span><span class="err">──────────────────</span><span class="w"> </span><span class="n">tidyverse</span><span class="w"> </span><span class="m">2.0.0</span><span class="w"> </span><span class="err">──</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">dplyr</span><span class="w">     </span><span class="m">1.1.4</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">readr</span><span class="w">     </span><span class="m">2.1.5</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">forcats</span><span class="w">   </span><span class="m">1.0.0</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">stringr</span><span class="w">   </span><span class="m">1.5.1</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">ggplot2</span><span class="w">   </span><span class="m">3.5.1</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">lubridate</span><span class="w"> </span><span class="m">1.9.4</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">tibble</span><span class="w">    </span><span class="m">3.2.1</span><span class="w">     </span><span class="err">✔</span><span class="w"> </span><span class="n">purrr</span><span class="w">     </span><span class="m">1.0.2</span><span class="w">
+</span><span class="err">✔</span><span class="w"> </span><span class="n">tidyr</span><span class="w">     </span><span class="m">1.3.1</span><span class="w">
+</span><span class="err">──</span><span class="w"> </span><span class="n">Conflicts</span><span class="w"> </span><span class="err">────────────────────────────────────</span><span class="w"> </span><span class="n">tidyverse_conflicts</span><span class="p">()</span><span class="w"> </span><span class="err">──</span><span class="w">
+</span><span class="err">✖</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">()</span><span class="w"> </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="n">filter</span><span class="p">()</span><span class="w">
+</span><span class="err">✖</span><span class="w"> </span><span class="n">dplyr</span><span class="o">::</span><span class="n">lag</span><span class="p">()</span><span class="w">    </span><span class="n">masks</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="n">lag</span><span class="p">()</span><span class="w">
+</span><span class="n">ℹ</span><span class="w"> </span><span class="n">Use</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">conflicted</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">force</span><span class="w"> </span><span class="n">all</span><span class="w"> </span><span class="n">conflicts</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">become</span><span class="w"> </span><span class="n">errors</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="パッケージ一覧">パッケージ一覧</h4>
+
+<p>コアパッケージとして以下の9つがあります。</p>
+
+<ul>
+  <li>ggplot2：データの視覚化</li>
+  <li>dplyr：データの操作</li>
+  <li>tidyr：データの整理</li>
+  <li>readr：データのインポート</li>
+  <li>purrr：関数プログラミング</li>
+  <li>tibble：データの形式</li>
+  <li>stringr：文字列</li>
+  <li>forcats：要因</li>
+  <li>lubridate：日付・時刻</li>
+</ul>
+
+<p>コアパッケージ以外にも以下のパッケージが同時にインストールされていますが、ここではその紹介だけにとどめておきます。</p>
+
+<h3 id="ggplot2">ggplot2</h3>
+
+<h4 id="ggplot2とは">ggplot2とは</h4>
+
+<h4 id="基本的な使い方">基本的な使い方</h4>
+
+<p>まずはggplot2のサンプルデータである<code class="language-plaintext highlighter-rouge">mpg</code>を使用して散布図を描きます。<code class="language-plaintext highlighter-rouge">ggplot()</code>を使用してキャンパスを作成し、<code class="language-plaintext highlighter-rouge">geom_point()</code>でその上に散布図を描きます。</p>
+
+<p>ggplot2では以下に示すように、<code class="language-plaintext highlighter-rouge">+</code>を用いて情報を追加します。</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">displ</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hwy</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="aesによる調整">aes()による調整</h4>
+
+<p><code class="language-plaintext highlighter-rouge">aes()</code>では、以下のような要素を指定できます。</p>
+
+<ul>
+  <li>変数の指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y</code></li>
+      <li><code class="language-plaintext highlighter-rouge">xmin</code>, <code class="language-plaintext highlighter-rouge">xmax</code>, <code class="language-plaintext highlighter-rouge">xend</code>, <code class="language-plaintext highlighter-rouge">ymin</code>, <code class="language-plaintext highlighter-rouge">ymax</code>, <code class="language-plaintext highlighter-rouge">yend</code></li>
+    </ul>
+  </li>
+  <li>色の指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">color</code>：点・線の色の指定。条件ごとの色分け</li>
+      <li><code class="language-plaintext highlighter-rouge">fill</code>：塗りつぶしの色の指定</li>
+      <li><code class="language-plaintext highlighter-rouge">alpha</code>：不透明度を指定</li>
+    </ul>
+  </li>
+  <li>大きさの指定
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">size</code>：点の大きさ、線の太さを指定</li>
+      <li><code class="language-plaintext highlighter-rouge">shape</code>：点の形を指定</li>
+      <li><code class="language-plaintext highlighter-rouge">linetype</code>：線の種類を指定</li>
+    </ul>
+  </li>
+  <li>単にグループ分けする
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">group</code>：色や形を保持して条件分け</li>
+    </ul>
+  </li>
+</ul>
+
+<p>例えば、<code class="language-plaintext highlighter-rouge">color = drv</code>を指定すると次のようになります。</p>
+
+<h4 id="グラフの種類">グラフの種類</h4>
+
+<p>ggplot2では、<code class="language-plaintext highlighter-rouge">geom_**()</code>を用いてさまざまなグラフを作成できます。以下にその一覧を示します。</p>
+
+<ul>
+  <li>散布図
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_point()</code></li>
+    </ul>
+  </li>
+  <li>折れ線グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_line()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_path()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_step()</code></li>
+    </ul>
+  </li>
+  <li>面グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_ribbon()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_area()</code></li>
+    </ul>
+  </li>
+  <li>ヒストグラム
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_histogram()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_freqploy()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_density()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_bin2d()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_hex()</code></li>
+    </ul>
+  </li>
+  <li>棒グラフ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_bar()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_col()</code></li>
+    </ul>
+  </li>
+  <li>箱ひげ図
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_box_plot()</code></li>
+    </ul>
+  </li>
+  <li>バイオリンプロット
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_violin()</code></li>
+    </ul>
+  </li>
+  <li>ドットプロット
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_dotplot()</code></li>
+    </ul>
+  </li>
+  <li>ヒートマップ
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">geom_tile()</code></li>
+      <li><code class="language-plaintext highlighter-rouge">geom_raster()</code></li>
+    </ul>
+  </li>
+  <li>エラーバー</li>
+  <li>関数</li>
+  <li>回帰直線</li>
+</ul>
+
+<h4 id="グラフの設定">グラフの設定</h4>
+
+<h4 id="themeの設定"><code class="language-plaintext highlighter-rouge">theme()</code>の設定</h4>
+
+<h3 id="dplyr">dplyr</h3>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#R</span>
+          
+            <span class="tag-badge">#tidyverse</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+        <a href="/r/20241224/5/" class="prev-post">&larr; lavaanguiでパス図を描く</a>
+      
+      
+        <a href="/research/20250120/6/" class="next-post">Zoteroで論文を管理する &rarr;</a>
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>

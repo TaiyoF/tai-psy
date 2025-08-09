@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rの演算子について - Taiyo Fujita</title>
+    <link rel="stylesheet" href="/tai-psy/assets/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="/tai-psy/">Taiyo Fujita</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="/tai-psy/" class="nav-link">ホーム</a></li>
+                <li><a href="/tai-psy/about-me/" class="nav-link">プロフィール</a></li>
+                <li><a href="/tai-psy/about-research/" class="nav-link">研究テーマ</a></li>
+                <li><a href="/tai-psy/about-cv/" class="nav-link">業績</a></li>
+                <li><a href="/tai-psy/column/" class="nav-link">コラム</a></li>
+                <li><a href="/tai-psy/links/" class="nav-link">リンク</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+    <main>
+        
+        <article class="post">
+  <div class="page-header post-hero">
+    <h1 class="post-title">Rの演算子について</h1>
+    <div class="post-meta">
+      <span class="post-date">2024年12月21日</span>
+    </div>
+  </div>
+  
+  <nav class="post-breadcrumb">
+    <a href="/tai-psy/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="/tai-psy/column/">コラム</a>
+    
+    
+      <span class="sep">›</span>
+      
+      <a href="/tai-psy/r/">R</a>
+    
+  </nav>
+
+  <div class="post-content">
+    <p>今回はRで使用する演算子について整理します。</p>
+
+<h3 id="演算子とは">演算子とは</h3>
+
+<p>演算子とは、計算や処理を表現するための記号のことです。</p>
+
+<h3 id="演算子の種類">演算子の種類</h3>
+
+<p>Rで使用される演算子には、算術・比較・論理・代入・その他に区分されます。</p>
+
+<h4 id="算術演算子">算術演算子</h4>
+
+<p>算術演算子とは、四則演算などの数値計算を行うための演算子のことです。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td>加算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>減算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td>乗算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">/</code></td>
+      <td>除算</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">^</code></td>
+      <td>べき乗</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%%</code></td>
+      <td>整数除算（剰余）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%/%</code></td>
+      <td>整数除算（商）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="比較演算子">比較演算子</h4>
+
+<p>比較演算子とは、2つの値を比較しその結果を論理値として返す演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">==</code></td>
+      <td>等しい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!=</code></td>
+      <td>等しくない</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;</code></td>
+      <td>より小さい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;</code></td>
+      <td>より大きい</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;=</code></td>
+      <td>以下</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&gt;=</code></td>
+      <td>以上</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="論理演算子">論理演算子</h4>
+
+<p>論理演算子とは、論理値を操作して新しい論理値を生成する演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td>要素ごとの論理積（<code class="language-plaintext highlighter-rouge">AND</code>）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&amp;&amp;</code></td>
+      <td>論理積（<code class="language-plaintext highlighter-rouge">AND</code>）：最初の要素のみ評価</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|</code></td>
+      <td>要素ごとの論理和（<code class="language-plaintext highlighter-rouge">OR</code>）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|\|</code></td>
+      <td>論理和（<code class="language-plaintext highlighter-rouge">OR</code>）：最初の要素のみ評価</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td>論理否定（<code class="language-plaintext highlighter-rouge">NOT</code>）</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="代入演算子">代入演算子</h4>
+
+<p>代入演算子は、値やオブジェクトに変数を割り当てるために使用する演算子です。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;-</code></td>
+      <td>左代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-&gt;</code></td>
+      <td>右代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">=</code></td>
+      <td>左代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">&lt;&lt;-</code></td>
+      <td>グローバル代入</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-&gt;&gt;</code></td>
+      <td>グローバル右代入</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="代入演算子の特徴">代入演算子の特徴</h5>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">`=`</code>は関数の引数指定にも使用されるため，<code class="language-plaintext highlighter-rouge">&lt;-</code>の方が推奨されます。</li>
+  <li><code class="language-plaintext highlighter-rouge">`&lt;&lt;-`</code>はグローバル環境に直接代入するための演算子です。</li>
+</ul>
+
+<h4 id="その他の演算子">その他の演算子</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">演算子</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%*%</code></td>
+      <td>内積・行列の積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%in%</code></td>
+      <td>外積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%o%</code></td>
+      <td>クロネッカー積</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%x%</code></td>
+      <td>ベクトル内の要素の存在確認</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%&gt;%</code></td>
+      <td>パイプ演算子（magrittr）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">\|&gt;</code></td>
+      <td>パイプ演算子（R 4.1以降）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%&lt;&gt;%</code></td>
+      <td>代入機能付きパイプ演算子</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">%T&gt;%</code></td>
+      <td>Tee演算子（左側の値を返す）</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">:</code></td>
+      <td>シーケンスを生成</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">**::**</code></td>
+      <td>公開オブジェクトにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">:::</code></td>
+      <td>非公開オブジェクトにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">$</code></td>
+      <td>リストやデータフレームの要素にアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">@</code></td>
+      <td>S4クラスオブジェクトのスロットにアクセス</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[]</code></td>
+      <td>複数の要素を、元と同じ型で抽出</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[[]]</code></td>
+      <td>単一の要素のみを抽出</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">-</code></td>
+      <td>符号を逆転</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">~</code></td>
+      <td>モデル式を作成</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="演算子の優先順位">演算子の優先順位</h3>
+
+<p>Rにおける演算子の優先順位は以下の通りです。</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">::</code> <code class="language-plaintext highlighter-rouge">:::</code>　名前空間へのアクセス</li>
+  <li><code class="language-plaintext highlighter-rouge">$</code> <code class="language-plaintext highlighter-rouge">@</code>　要素へのアクセス</li>
+  <li><code class="language-plaintext highlighter-rouge">[</code> <code class="language-plaintext highlighter-rouge">[[</code>　インデックス演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">^</code>　べき乗</li>
+  <li><code class="language-plaintext highlighter-rouge">-</code> <code class="language-plaintext highlighter-rouge">+</code>　単項演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">:</code>　シーケンス演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">%any%</code> <code class="language-plaintext highlighter-rouge">|&gt;</code>　特殊演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">*</code> <code class="language-plaintext highlighter-rouge">/</code>　乗除演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">+</code> <code class="language-plaintext highlighter-rouge">-</code>　加減演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;</code> <code class="language-plaintext highlighter-rouge">&gt;</code> <code class="language-plaintext highlighter-rouge">&lt;=</code> <code class="language-plaintext highlighter-rouge">&gt;=</code> <code class="language-plaintext highlighter-rouge">==</code> <code class="language-plaintext highlighter-rouge">!=</code>　比較演算子（大小・同値関係）</li>
+  <li><code class="language-plaintext highlighter-rouge">!</code>　論理演算子（NOT）</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;</code> <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>　論理演算子（AND）</li>
+  <li><code class="language-plaintext highlighter-rouge">|</code> <code class="language-plaintext highlighter-rouge">||</code>　論理演算子（OR）</li>
+  <li><code class="language-plaintext highlighter-rouge">~</code>　チルダ演算子</li>
+  <li><code class="language-plaintext highlighter-rouge">-&gt;</code> <code class="language-plaintext highlighter-rouge">-&gt;&gt;</code>　代入演算子（右代入）</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;-</code> <code class="language-plaintext highlighter-rouge">&lt;&lt;-</code>　代入演算子（左代入）</li>
+  <li><code class="language-plaintext highlighter-rouge">=</code>　代入演算子（左代入）</li>
+</ol>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-tags-section">
+        <h3>タグ</h3>
+        <div class="post-tags">
+          
+            <span class="tag-badge">#R</span>
+          
+            <span class="tag-badge">#演算子</span>
+          
+        </div>
+      </div>
+    
+    <nav class="post-navigation">
+      
+        <a href="/r/20241220/1/" class="prev-post">&larr; tidyplotsで棒グラフを作成する</a>
+      
+      
+        <a href="/r/20241222/3/" class="next-post">qualtRicsでデータを読み込む &rarr;</a>
+      
+    </nav>
+  </footer>
+</article>
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>藤田 太陽</h3>
+                <p>大阪大学大学院人間科学研究科<br>社会心理学研究分野</p>
+            </div>
+            <div class="footer-section">
+                <h4>連絡先</h4>
+                <p>sunday.taiyo[at]gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Taiyo Fujita</p>
+            <p class="footer-disclaimer">このサイトの内容は個人の見解であり、所属機関等とは関係ありません。</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="/tai-psy/assets/js/main.js"></script>
+</body>
+</html>
