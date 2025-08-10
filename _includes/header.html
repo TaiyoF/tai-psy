@@ -1,0 +1,24 @@
+<header class="site-header">
+    <div class="header-container">
+        <div class="header-brand">
+            <h1 class="site-title">
+                <a href="{% link index.md %}">{{ site.title | escape }}</a>
+            </h1>
+        </div>
+        <nav class="site-nav">
+            <ul class="nav-list">
+                <li><a href="{% link index.md %}" class="nav-link" {% if page.url == '/' or page.url == '/index.html' or page.url == site.baseurl %}aria-current="page"{% endif %}><span class="nav-label">ホーム</span><span class="nav-sub">Home</span></a></li>
+                <li><a href="{% link about-me.md %}" class="nav-link" {% if page.url contains '/about-me' %}aria-current="page"{% endif %}><span class="nav-label">プロフィール</span><span class="nav-sub">Profile</span></a></li>
+                <li><a href="{% link about-research.md %}" class="nav-link" {% if page.url contains '/about-research' %}aria-current="page"{% endif %}><span class="nav-label">研究テーマ</span><span class="nav-sub">Research</span></a></li>
+                <li><a href="{% link about-cv.md %}" class="nav-link" {% if page.url contains '/about-cv' %}aria-current="page"{% endif %}><span class="nav-label">業績</span><span class="nav-sub">Works</span></a></li>
+                <li><a href="{% link column.md %}" class="nav-link" {% if page.url contains '/column' or page.collection == 'posts' %}aria-current="page"{% endif %}><span class="nav-label">コラム</span><span class="nav-sub">Articles</span></a></li>
+                <li><a href="{% link links.md %}" class="nav-link" {% if page.url contains '/links' %}aria-current="page"{% endif %}><span class="nav-label">リンク</span><span class="nav-sub">Links</span></a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-toggle" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://tai-psy.github.io/tai-psy/sitemap.xml
+
+

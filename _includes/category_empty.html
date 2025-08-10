@@ -1,0 +1,10 @@
+{%- assign posts = include.posts -%}
+{%- if posts and posts.size == 0 -%}
+  <div class="empty-state">
+    <div class="empty-icon" aria-hidden="true"></div>
+    <h3 class="empty-title">準備中</h3>
+    <p class="empty-text">このカテゴリーの記事はまだありません。</p>
+  </div>
+{%- endif -%}
+
+
