@@ -28,7 +28,7 @@ permalink: /about-me/
                 </div>
                 <div class="info-item">
                     <span class="info-label">連絡先</span>
-                    <span class="info-value">sunday.taiyo[at]gmail.com</span>
+                    <span class="info-value">u606848d[at]ecs.osaka-u.ac.jp</span>
                 </div>              
             </div>
         </div>
