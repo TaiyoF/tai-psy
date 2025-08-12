@@ -28,7 +28,6 @@ show_papers: false
             </ol>
         </div>
     </div>
-    {% endif %}
     <div class="cv-section">
         <div class="cv-card">
             <h2>学会発表</h2>
@@ -37,6 +36,7 @@ show_papers: false
             </ol>
         </div>
     </div>
+    {% endif %}
     <div class="cv-section">
         <div class="cv-card">
             <h2>MISC</h2>
