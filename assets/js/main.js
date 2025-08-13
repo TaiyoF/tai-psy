@@ -271,8 +271,8 @@ function throttle(func, limit) {
 // ===== 追加のスタイル（CSSで対応できない場合） =====
 
 // モバイルメニューのスタイルを動的に追加
-const mobileStyle = document.createElement('style');
-mobileStyle.textContent = `
+const mobileMenuStyle = document.createElement('style');
+mobileMenuStyle.textContent = `
     .site-nav.active {
         display: flex !important;
         position: absolute;
@@ -319,4 +319,4 @@ mobileStyle.textContent = `
     }
 `;
 
-document.head.appendChild(mobileStyle);
+document.head.appendChild(mobileMenuStyle);
