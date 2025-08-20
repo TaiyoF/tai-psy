@@ -7,6 +7,8 @@ tags: [R, tidyverse]
 slug: "4"
 ---
 
+# 工事中です！
+
 [`tidyverse`](https://tidyverse.tidyverse.org/)は、Rでデータ分析をする際に必ずと言っても良いほど用いられるパッケージ群です。実際、私もよく使います。
 
 一方で、`tidyverse`で一体何ができるのかを体系的に学んだことが無いなと思ったので、本記事では`tidyverse`パッケージについて整理してみようと思います。
