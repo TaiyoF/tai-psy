@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: null
 title: "tidyverseって結局何ができるの？"
 date: 2024-12-24 21:09:53 +0900
 categories: [r]
