@@ -27,16 +27,16 @@ show_papers: false
                 <!-- 例: 藤田 太陽. 報告書タイトル. 機関名, 20XX. <span class="cv-flag nopeer">査読なし</span> -->
             </ol>
         </div>
+    {% endif %}
     </div>
     <div class="cv-section">
         <div class="cv-card">
             <h2>学会発表</h2>
             <ol class="cv-ol">
-                <li>藤田 太陽・三浦 麻子　自由意志信念が援助行動に及ぼす影響―日本・イギリス・アメリカの比較研究―　日本社会心理学会第66回大会　2025年9月（ポスター）</li>
+                <li>藤田 太陽・三浦 麻子　自由意志信念が援助行動にもたらす効果―日本・イギリス・アメリカの比較研究―　日本社会心理学会第66回大会　2025年9月（ポスター）</li>
             </ol>
         </div>
     </div>
-    {% endif %}
     <div class="cv-section">
         <div class="cv-card">
             <h2>MISC</h2>
