@@ -27,8 +27,8 @@ show_papers: false
                 <!-- 例: 藤田 太陽. 報告書タイトル. 機関名, 20XX. <span class="cv-flag nopeer">査読なし</span> -->
             </ol>
         </div>
-    {% endif %}
     </div>
+    {% endif %}
     <div class="cv-section">
         <div class="cv-card">
             <h2>学会発表</h2>
