@@ -72,6 +72,14 @@ permalink: /about-me/
                     <span class="experience-period">2025年4月-7月</span>
                     <span class="experience-title">ティーチング・アシスタント　統計学Ａ-Ⅰ（大阪大学）</span>
                 </div>
+                <div class="experience-item">
+                    <span class="experience-period">2025年8月-現在</span>
+                    <span class="experience-title">論文チューター（大阪大学）</span>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-period">2025年10月-現在</span>
+                    <span class="experience-title">ティーチング・アシスタント　人間行動学実験実習Ⅲ（大阪大学）</span>
+                </div>
             </div>
         </div>
     </div>
@@ -80,6 +88,8 @@ permalink: /about-me/
             <h2>所属学会</h2>
             <div class="membership-list">
                 <div class="membership-item">日本社会心理学会</div>
+            <div class="membership-list">
+                <div class="membership-item">日本人間行動進化学会</div>
             </div>
         </div>
     </div>
