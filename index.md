@@ -35,25 +35,33 @@ title: "ホーム"
   </div>
 </div>
 
-<div class="recent-posts-section">
-    <h2>最新記事</h2>
-    <div class="posts-grid">
-        {% assign recent_posts = site.posts | slice: 0, 3 %}
-        {% for post in recent_posts %}
-        <div class="post-card">
-            <h3 class="post-title">{{ post.title }}</h3>
-            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-            <div class="post-footer-inline">
-                <div class="post-meta">
-                    <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
-                    <span class="post-category">{{ post.categories | first }}</span>
-                </div>
-                <a href="{{ post.url | relative_url }}" class="post-link">続きを読む →</a>
-            </div>
+      {% assign cat = post.categories | first %}
+
+      {% assign ex = post.excerpt | strip_html | strip_newlines | strip %}
+      {% if ex == "" %}
+        {% assign ex = post.content | strip_html | strip_newlines | strip %}
+      {% endif %}
+
+      <a class="post-card post-card--link" href="{{ post.url | relative_url }}">
+        <h3 class="post-title">{{ post.title }}</h3>
+        <p class="post-excerpt">{{ ex | truncate: 100 }}</p>
+
+        <div class="post-footer-inline">
+          <div class="post-meta">
+            <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+            {% if cat %}
+              <span class="post-category">{{ cat }}</span>
+            {% endif %}
+          </div>
+
+          <span class="post-link">続きを読む →</span>
         </div>
-        {% endfor %}
-    </div>
-    <div class="view-all-posts">
-        <a href="{% link column.md %}" class="btn btn-outline">すべての記事を見る</a>
-    </div>
+      </a>
+
+    {% endfor %}
+  </div>
+
+  <div class="view-all-posts">
+    <a href="{% link column.md %}" class="btn btn-outline">すべての記事を見る</a>
+  </div>
 </div>
