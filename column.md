@@ -28,17 +28,19 @@ permalink: /column/
         <div class="articles-grid">
             {% assign recent_posts = site.posts | slice: 0, 6 %}
             {% for post in recent_posts %}
-            <div class="post-card">
+            <a class="post-card post-card--link" href="{{ post.url | relative_url }}">
                 <h3 class="article-title">{{ post.title }}</h3>
-                <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                <p class="article-excerpt">
+                    {{ post.excerpt | strip_html | strip_newlines | strip | truncate: 120 }}
+                </p>
                 <div class="post-footer-inline">
                     <div class="post-meta">
                         <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
                         <span class="post-category">{{ post.categories | first }}</span>
                     </div>
-                    <a href="{{ post.url | relative_url }}" class="article-link">続きを読む →</a>
+                    <span class="article-link">続きを読む →</span>
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
     </div>
