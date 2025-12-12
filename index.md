@@ -45,7 +45,7 @@ title: "ホーム"
         <h3 class="post-title">{{ post.title }}</h3>
 
         <p class="post-excerpt">
-          {{ post.excerpt | strip_html | truncate: 100 }}
+          {{ post.excerpt | strip_html | strip_newlines | strip | truncate: 100 }}
         </p>
 
         <div class="post-footer-inline">
