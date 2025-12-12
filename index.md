@@ -35,29 +35,28 @@ title: "ホーム"
   </div>
 </div>
 
-      {% assign cat = post.categories | first %}
+<div class="recent-posts-section">
+  <h2>最新記事</h2>
 
-      {% assign ex = post.excerpt | strip_html | strip_newlines | strip %}
-      {% if ex == "" %}
-        {% assign ex = post.content | strip_html | strip_newlines | strip %}
-      {% endif %}
-
+  <div class="posts-grid">
+    {% assign recent_posts = site.posts | slice: 0, 3 %}
+    {% for post in recent_posts %}
       <a class="post-card post-card--link" href="{{ post.url | relative_url }}">
         <h3 class="post-title">{{ post.title }}</h3>
-        <p class="post-excerpt">{{ ex | truncate: 100 }}</p>
+
+        <p class="post-excerpt">
+          {{ post.excerpt | strip_html | truncate: 100 }}
+        </p>
 
         <div class="post-footer-inline">
           <div class="post-meta">
             <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
-            {% if cat %}
-              <span class="post-category">{{ cat }}</span>
-            {% endif %}
+            <span class="post-category">{{ post.categories | first }}</span>
           </div>
 
           <span class="post-link">続きを読む →</span>
         </div>
       </a>
-
     {% endfor %}
   </div>
 
@@ -65,3 +64,4 @@ title: "ホーム"
     <a href="{% link column.md %}" class="btn btn-outline">すべての記事を見る</a>
   </div>
 </div>
+
