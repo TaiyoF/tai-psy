@@ -501,6 +501,28 @@ a.card.card--link:hover .card-link {
     text-align: center;
 }
 
+a.post-card.post-card--link{
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+a.post-card.post-card--link:visited{
+  color: inherit;
+}
+
+a.post-card.post-card--link:focus-visible{
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* 「続きを読む」は span になるので、カードホバーで反応させる */
+a.post-card.post-card--link:hover .post-link{
+  color: var(--primary-hover);
+}
+
+
 /* ===== フッター ===== */
 .site-footer {
     background: linear-gradient(180deg, #E9EEF5 0%, #E3EAF3 100%);
