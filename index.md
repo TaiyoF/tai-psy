@@ -14,23 +14,25 @@ title: "ホーム"
 </div>
 
 <div class="content-section">
-    <div class="grid-container">
-        <div class="card">
-            <h3>プロフィール</h3>
-            <p>大阪大学大学院人間科学研究科で大学院生をしています。</p>
-            <a href="{% link about-me.md %}" class="card-link">詳細を見る →</a>
-        </div>
-        <div class="card">
-            <h3>研究テーマ</h3>
-            <p>社会規範がどのように形成するのかについて研究しています。</p>
-            <a href="{% link about-research.md %}" class="card-link">詳細を見る →</a>
-        </div>
-        <div class="card">
-            <h3>業績</h3>
-            <p>研究発表や論文執筆などの学術業績についてのページです。</p>
-            <a href="{% link about-cv.md %}" class="card-link">詳細を見る →</a>
-        </div>
-    </div>
+  <div class="grid-container">
+    <a class="card card--link" href="{% link about-me.md %}">
+      <h3>プロフィール</h3>
+      <p>大阪大学大学院人間科学研究科で大学院生をしています。</p>
+      <span class="card-link">詳細を見る →</span>
+    </a>
+
+    <a class="card card--link" href="{% link about-research.md %}">
+      <h3>研究テーマ</h3>
+      <p>社会規範がどのように形成するのかについて研究しています。</p>
+      <span class="card-link">詳細を見る →</span>
+    </a>
+
+    <a class="card card--link" href="{% link about-cv.md %}">
+      <h3>業績</h3>
+      <p>研究発表や論文執筆などの学術業績についてのページです。</p>
+      <span class="card-link">詳細を見る →</span>
+    </a>
+  </div>
 </div>
 
 <div class="recent-posts-section">
