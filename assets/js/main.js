@@ -128,28 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // カードのホバーエフェクトとクリック機能
-    const cards = document.querySelectorAll('.post-card, .category-card, .article-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-        
-        card.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-                return;
-            }
-            const link = this.querySelector('a');
-            if (link) {
-                link.click();
-            }
-        });
-    });
-    
     // ヘッダーのスクロール効果（控えめに）
     const header = document.querySelector('.site-header');
     let lastScrollTop = 0;
