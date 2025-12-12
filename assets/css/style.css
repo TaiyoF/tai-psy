@@ -331,23 +331,22 @@ main {
     align-self: flex-end;
 }
 
-.card-link:hover {
-    color: var(--primary-hover);
-}
-
 /* a.card をカードとして見せるための上書き（最小差分） */
-a.card.card--link {
+a.card.card--link,
+a.post-card.post-card--link{
   text-decoration: none; /* 下線を消す */
   color: inherit;        /* リンク色に引っ張られない */
 }
 
 /* Safari 等でリンクの visited 色が出るのを防ぐ */
-a.card.card--link:visited {
+a.card.card--link:visited,
+a.post-card.post-card--link:visited {
   color: inherit;
 }
 
 /* キーボード操作での視認性（アクセシビリティ＆“丁寧さ”） */
-a.card.card--link:focus-visible {
+a.card.card--link:focus-visible,
+a.post-card.post-card--link:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 4px;
 }
@@ -493,28 +492,8 @@ a.card.card--link:hover .card-link {
     align-self: flex-end;
 }
 
-.post-link:hover {
-    color: var(--primary-hover);
-}
-
 .view-all-posts {
     text-align: center;
-}
-
-a.post-card.post-card--link{
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-}
-
-a.post-card.post-card--link:visited{
-  color: inherit;
-}
-
-a.post-card.post-card--link:focus-visible{
-  outline: 2px solid var(--primary);
-  outline-offset: 4px;
 }
 
 /* 「続きを読む」は span になるので、カードホバーで反応させる */
