@@ -22,8 +22,6 @@ permalink: /links/
         <h2>関連学会</h2>
         <ul class="link-list">
             <li><a class="external" href="https://www.socialpsychology.jp/" target="_blank" rel="noopener">日本社会心理学会</a></li>
-        </ul>
-        <ul class="link-list">
             <li><a class="external" href="https://www.hbesj.org/" target="_blank" rel="noopener">日本行動進化学会</a></li>
         </ul>
     </div>
