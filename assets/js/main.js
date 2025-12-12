@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // カードのホバーエフェクトとクリック機能
-    const cards = document.querySelectorAll('.card, .post-card, .category-card, .article-card');
+    const cards = document.querySelectorAll('.post-card, .category-card, .article-card');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
@@ -139,14 +139,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
         
-        // カード全体をクリック可能にする
         card.addEventListener('click', function(e) {
-            // リンクやボタンがクリックされた場合は処理しない
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
                 return;
             }
-            
-            // カード内の最初のリンクを見つけてクリック
             const link = this.querySelector('a');
             if (link) {
                 link.click();
