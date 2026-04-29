@@ -1,0 +1,17 @@
+{%- assign twitter_url = site.twitter_url -%}
+{%- if twitter_url == nil or twitter_url == "" -%}
+  {%- assign twitter_url = "https://x.com/" | append: site.twitter_username -%}
+{%- endif -%}
+{%- assign github_url = site.github_url -%}
+{%- if github_url == nil or github_url == "" -%}
+  {%- assign github_url = "https://github.com/" | append: site.github_username -%}
+{%- endif -%}
+{%- assign asset_v = site.time | date: "%Y%m%d%H%M%S" -%}
+<div class="social-links{% if include.class %} {{ include.class }}{% endif %}" aria-label="SNSリンク">
+    <a class="social-link social-link-x" href="{{ twitter_url }}" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <img src="{{ '/assets/icons/social/twitter.svg?v=' | append: asset_v | relative_url }}" alt="" width="20" height="20">
+    </a>
+    <a class="social-link social-link-github" href="{{ github_url }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <img src="{{ '/assets/icons/social/github.svg?v=' | append: asset_v | relative_url }}" alt="" width="20" height="20">
+    </a>
+</div>

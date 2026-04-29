@@ -1,70 +1,293 @@
-/* ===== v2.1 スタイル（よりコンパクトに） ===== */
-.probability-viewer { max-width: 1100px; margin: 0 auto; padding: 12px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #0f172a; }
-.viewer-grid { display: grid; grid-template-columns: 300px 1fr; gap: 12px; }
-.panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; }
-.panel-header { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
-.panel-header h3 { margin: 0; font-size: 14px; font-weight: 600; color: #0f172a; }
+/* Probability Viewer: page-scoped styles */
 
-.control-group { padding: 10px 12px; border-bottom: 1px solid #eef2f7; }
-.control-group:last-child { border-bottom: none; }
-.control-group label { display: block; margin-bottom: 4px; font-size: 12px; color: #0f172a; font-weight: 600; }
-.parameter-slider { width: 100%; margin-top: 4px; height: 6px; background: #e5e7eb; border-radius: 999px; outline: none; }
-.parameter-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #2563eb; cursor: pointer; }
-.parameter-slider::-moz-range-thumb { width: 12px; height: 12px; border: none; border-radius: 50%; background: #2563eb; cursor: pointer; }
-.parameter-value { display: inline-block; min-width: 36px; padding: 2px 6px; margin-left: 6px; border-radius: 4px; background: #f1f5f9; color: #2563eb; font-weight: 700; font-size: 12px; }
+.probability-viewer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+}
 
-.modern-select { width: 100%; padding: 6px 8px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fff; font-size: 13px; }
+/* Layout */
+.probability-viewer .viewer-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 12px;
+}
 
-.quick-actions { padding: 10px 12px; display: flex; gap: 8px; }
-.action-btn { flex: 1; border: 1px solid #e5e7eb; background: #fff; color: #0f172a; border-radius: 6px; padding: 6px 8px; cursor: pointer; font-size: 13px; }
-.action-btn:hover { background: #f8fafc; }
+.probability-viewer .panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
 
-.plot-container { padding: 6px; width: 100%; aspect-ratio: 1 / 1; }
+.probability-viewer .panel-header {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
 
-.info-panel { padding: 10px 12px; border-top: 1px solid #e5e7eb; background: #f8fafc; }
-.info-panel h3 { margin: 0 0 4px 0; font-size: 13px; }
-.info-panel p { margin: 0; color: #475569; font-size: 12px; line-height: 1.6; }
-.formula-tex { margin-top: 6px; font-size: 14px; color: #0f172a; }
+.probability-viewer .panel-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
 
-/* === 統計量（カード廃止のフラット表示） === */
-.stats-list { padding: 6px 12px 10px 12px; display: grid; grid-template-columns: 1fr; row-gap: 4px; }
-.stats-item { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; column-gap: 8px; font-size: 12.5px; }
-.stats-key { color: #64748b; }
-.stats-dots { border-bottom: 1px dotted #e5e7eb; transform: translateY(-2px); }
-.stats-value { color: #2563eb; font-weight: 700; font-variant-numeric: tabular-nums; }
-.stats-note { color: #94a3b8; font-size: 11px; padding-left: 12px; }
+/* Controls */
+.probability-viewer .control-group {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef2f7;
+}
 
-/* ライン型の統計量表示（バッジつき） */
-.stats-lines { padding: 8px 12px 10px 12px; display: grid; row-gap: 6px; font-size: 12.5px; }
-.stats-line { color: #0f172a; }
+.probability-viewer .control-group:last-child {
+  border-bottom: none;
+}
 
-.probability-row { padding: 8px 12px 0 12px; display: grid; grid-template-columns: 1fr; row-gap: 8px; align-items: start; }
-.prob-modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden; background: #f1f5f9; justify-self: stretch; width: 100%; }
-.prob-modes input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
-.prob-modes label { padding: 8px 0; font-size: 12.5px; font-weight: 600; color: #0f172a; cursor: pointer; text-align: center; white-space: nowrap; border-right: 1px solid #e2e8f0; }
-.prob-modes label:last-of-type { border-right: none; }
-.prob-modes input:checked + label { background: #2563eb; color: #fff; }
-.prob-inputs { display: inline-flex; gap: 8px; align-items: center; justify-self: start; }
-/* a, b 入力を小さめに固定 */
+.probability-viewer .control-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.probability-viewer .modern-select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 13px;
+}
+
+.probability-viewer .parameter-slider {
+  width: 100%;
+  margin-top: 4px;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  outline: none;
+}
+
+.probability-viewer .parameter-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+}
+
+.probability-viewer .parameter-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  cursor: pointer;
+}
+
+.probability-viewer .parameter-value {
+  display: inline-block;
+  min-width: 36px;
+  margin-left: 6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Actions */
+.probability-viewer .quick-actions {
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.probability-viewer .action-btn {
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  color: #0f172a;
+  padding: 6px 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.probability-viewer .action-btn:hover {
+  background: #f8fafc;
+}
+
+/* Plot / info */
+.probability-viewer .plot-container {
+  width: 100%;
+  padding: 6px;
+  aspect-ratio: 1 / 1;
+}
+
+.probability-viewer .info-panel {
+  padding: 10px 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.probability-viewer .info-panel h3 {
+  margin: 0 0 4px;
+  font-size: 13px;
+}
+
+.probability-viewer .info-panel p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.probability-viewer .formula-tex {
+  margin-top: 6px;
+  color: #0f172a;
+  font-size: 14px;
+}
+
+/* Statistics */
+.probability-viewer .stats-list {
+  padding: 6px 12px 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 4px;
+}
+
+.probability-viewer .stats-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  column-gap: 8px;
+  font-size: 12.5px;
+}
+
+.probability-viewer .stats-key {
+  color: #64748b;
+}
+
+.probability-viewer .stats-dots {
+  border-bottom: 1px dotted #e5e7eb;
+  transform: translateY(-2px);
+}
+
+.probability-viewer .stats-value {
+  color: #2563eb;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.probability-viewer .stats-note {
+  color: #94a3b8;
+  font-size: 11px;
+  padding-left: 12px;
+}
+
+.probability-viewer .stats-lines {
+  padding: 8px 12px 10px;
+  display: grid;
+  row-gap: 6px;
+  font-size: 12.5px;
+}
+
+.probability-viewer .stats-line {
+  color: #0f172a;
+}
+
+/* Probability controls */
+.probability-viewer .probability-row {
+  padding: 8px 12px 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 8px;
+  align-items: start;
+}
+
+.probability-viewer .prob-modes {
+  width: 100%;
+  justify-self: stretch;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.probability-viewer .prob-modes input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.probability-viewer .prob-modes label {
+  padding: 8px 0;
+  border-right: 1px solid #e2e8f0;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.probability-viewer .prob-modes label:last-of-type {
+  border-right: none;
+}
+
+.probability-viewer .prob-modes input:checked + label {
+  background: #2563eb;
+  color: #fff;
+}
+
+.probability-viewer .prob-inputs {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 8px;
+}
+
 .probability-viewer .probability-controls .prob-input input {
   width: 80px !important;
   height: 30px;
   padding: 4px 6px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
+  box-sizing: border-box;
   font-size: 13px;
   line-height: 1;
-  box-sizing: border-box;
 }
-.probability-result { padding: 4px 12px 8px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 12.5px; color: #0f172a; }
-.probability-result .prob-badge { display:inline-block; padding:2px 8px; border-radius:6px; background:#eef2ff; color:#1d4ed8; font-weight:600; font-variant-numeric: tabular-nums; }
 
-/* 統計量内のバッジも同じスタイルを使用 */
-.stats-lines .prob-badge { display:inline-block; padding:2px 8px; border-radius:6px; background:#eef2ff; color:#1d4ed8; font-weight:600; font-variant-numeric: tabular-nums; }
+.probability-viewer .probability-result {
+  padding: 4px 12px 8px;
+  color: #0f172a;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12.5px;
+}
 
-/* 旧黒バッジを強制非表示 */
-.probability-badge { display: none !important; }
+.probability-viewer .prob-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: #1d4ed8;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.probability-viewer .probability-badge {
+  display: none !important;
+}
 
 @media (max-width: 920px) {
-  .viewer-grid { grid-template-columns: 1fr; }
+  .probability-viewer .viewer-grid {
+    grid-template-columns: 1fr;
+  }
 }
