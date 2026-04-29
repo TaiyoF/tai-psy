@@ -1,5 +1,5 @@
 ---
-layout: defalt
+layout: default
 title: "ホーム"
 ---
 
@@ -18,17 +18,17 @@ title: "ホーム"
         <div class="card">
             <h3>プロフィール</h3>
             <p>大阪大学大学院人間科学研究科で大学院生をしています。</p>
-            <a href="{% link about-me.md %}" class="card-link">詳細を見る →</a>
+            <a href="{% link pages/about-me.md %}" class="card-link">詳細を見る →</a>
         </div>
         <div class="card">
             <h3>研究テーマ</h3>
             <p>社会規範がどのように形成するのかについて研究しています。</p>
-            <a href="{% link about-research.md %}" class="card-link">詳細を見る →</a>
+            <a href="{% link pages/about-research.md %}" class="card-link">詳細を見る →</a>
         </div>
         <div class="card">
             <h3>業績</h3>
             <p>研究発表や論文執筆などの学術業績についてのページです。</p>
-            <a href="{% link about-cv.md %}" class="card-link">詳細を見る →</a>
+            <a href="{% link pages/about-cv.md %}" class="card-link">詳細を見る →</a>
         </div>
     </div>
 </div>
@@ -52,6 +52,7 @@ title: "ホーム"
         {% endfor %}
     </div>
     <div class="view-all-posts">
-        <a href="{% link column.md %}" class="btn btn-outline">すべての記事を見る</a>
+        <a href="{% link pages/column.md %}" class="btn btn-outline">すべての記事を見る</a>
     </div>
 </div>
+

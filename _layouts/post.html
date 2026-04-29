@@ -1,5 +1,5 @@
 ---
-layout: defalt
+layout: default
 ---
 
 <div class="page-header">
@@ -12,12 +12,12 @@ layout: defalt
 <nav class="post-breadcrumb">
   <a href="{% link index.md %}">ホーム</a>
   <span class="sep">›</span>
-  <a href="{% link column.md %}">コラム</a>
+  <a href="{% link pages/column.md %}">コラム</a>
   {% assign primary_category = page.categories | first %}
   {% if primary_category %}
     <span class="sep">›</span>
-    {% capture category_title %}{% case primary_category %}{% when 'r' %}R{% when 'statistics' %}統計学{% when 'research' %}研究{% when 'trivia' %}雑学{% when 'qualtrics' %}Qualtrics{% else %}{{ primary_category }}{% endcase %}{% endcapture %}
-    <a href="{% if primary_category == 'r' %}{% link r.md %}{% elsif primary_category == 'statistics' %}{% link statistics.md %}{% elsif primary_category == 'research' %}{% link research.md %}{% elsif primary_category == 'trivia' %}{% link trivia.md %}{% elsif primary_category == 'qualtrics' %}{% link qualtrics.md %}{% endif %}">{{ category_title | strip }}</a>
+    {% capture category_title %}{% case primary_category %}{% when 'r' %}R{% when 'statistics' %}統計学{% when 'research' %}研究{% when 'trivia' %}雑学{% when 'qualtrics' %}Qualtrics{% when 'programming' %}プログラミング{% when 'blog' %}ブログ{% else %}{{ primary_category }}{% endcase %}{% endcapture %}
+    <a href="{% if primary_category == 'r' %}{% link pages/categories/r.md %}{% elsif primary_category == 'statistics' %}{% link pages/categories/statistics.md %}{% elsif primary_category == 'research' %}{% link pages/categories/research.md %}{% elsif primary_category == 'trivia' %}{% link pages/categories/trivia.md %}{% elsif primary_category == 'qualtrics' %}{% link pages/categories/qualtrics.md %}{% elsif primary_category == 'programming' %}{% link pages/categories/programming.md %}{% elsif primary_category == 'blog' %}{% link pages/categories/blog.md %}{% endif %}">{{ category_title | strip }}</a>
   {% endif %}
 </nav>
 
@@ -39,3 +39,10 @@ layout: defalt
     {% endif %}
   </footer>
 </article>
+
+
+
+
+
+
+

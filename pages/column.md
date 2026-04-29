@@ -1,5 +1,5 @@
 ---
-layout: defalt
+layout: default
 title: "コラム"
 permalink: /column/
 ---
@@ -9,21 +9,20 @@ permalink: /column/
     <p class="page-subtitle">Articles</p>
 </div>
 
-
-
 <div class="column-content">
-    <div class="categories-section">
+    <section class="categories-section">
         <h2>カテゴリー一覧</h2>
         <div class="categories-grid categories-grid--fixed">
-            <a href="{% link r.md %}" class="category-card"><h3>R</h3><p>Data Analysis</p></a>
-            <a href="{% link programming.md %}" class="category-card"><h3>プログラミング</h3><p>Programming</p></a>
-            <a href="{% link qualtrics.md %}" class="category-card"><h3>Qualtrics</h3><p>Survey Design</p></a>
-            <a href="{% link statistics.md %}" class="category-card"><h3>統計学</h3><p>Statistics</p></a>
-            <a href="{% link research.md %}" class="category-card"><h3>研究</h3><p>Research</p></a>
-            <a href="{% link blog.md %}" class="category-card"><h3>ブログ</h3><p>Blog</p></a>
+            <a href="{% link pages/categories/r.md %}" class="category-card"><h3>R</h3><p>Data Analysis</p></a>
+            <a href="{% link pages/categories/programming.md %}" class="category-card"><h3>プログラミング</h3><p>Programming</p></a>
+            <a href="{% link pages/categories/qualtrics.md %}" class="category-card"><h3>Qualtrics</h3><p>Survey Design</p></a>
+            <a href="{% link pages/categories/statistics.md %}" class="category-card"><h3>統計学</h3><p>Statistics</p></a>
+            <a href="{% link pages/categories/research.md %}" class="category-card"><h3>研究</h3><p>Research</p></a>
+            <a href="{% link pages/categories/blog.md %}" class="category-card"><h3>ブログ</h3><p>Blog</p></a>
         </div>
-    </div>
-    <div class="recent-articles-section">
+    </section>
+
+    <section class="recent-articles-section">
         <h2>最新記事</h2>
         <div class="articles-grid">
             {% assign recent_posts = site.posts | slice: 0, 6 %}
@@ -41,5 +40,6 @@ permalink: /column/
             </div>
             {% endfor %}
         </div>
-    </div>
+    </section>
 </div>
+

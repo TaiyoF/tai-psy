@@ -1,4 +1,4 @@
-/* ===== ベーススタイル ===== */
+/* ===== 郢晏生繝ｻ郢ｧ・ｹ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #2d3748;
     background-color: #fafafa;
     font-size: 16px;
-    overflow-x: hidden; /* 100vw系のはみ出しで横スクロールが出てCLSになるのを防止 */
+    overflow-x: hidden; /* 100vw驍会ｽｻ邵ｺ・ｮ邵ｺ・ｯ邵ｺ・ｿ陷・ｽｺ邵ｺ蜉ｱ縲定ｮ難ｽｪ郢ｧ・ｹ郢ｧ・ｯ郢晢ｽｭ郢晢ｽｼ郢晢ｽｫ邵ｺ謔溘・邵ｺ・ｦCLS邵ｺ・ｫ邵ｺ・ｪ郢ｧ荵昴・郢ｧ蟶昜ｺ溯ｱ・ｽ｢ */
 }
 
 /* Skip link */
@@ -36,10 +36,10 @@ body {
   border-radius: 6px;
 }
 
-/* リロード時のスクロールバー出現によるCLSを抑止 */
+/* 郢晢ｽｪ郢晢ｽｭ郢晢ｽｼ郢晉判蜃ｾ邵ｺ・ｮ郢ｧ・ｹ郢ｧ・ｯ郢晢ｽｭ郢晢ｽｼ郢晢ｽｫ郢晁・繝ｻ陷・ｽｺ霑ｴ・ｾ邵ｺ・ｫ郢ｧ蛹ｻ・気LS郢ｧ蜻域､幄ｱ・ｽ｢ */
 html { scrollbar-gutter: stable; }
 
-/* カラーバリアブル（Steel Blue × Slate） */
+/* 郢ｧ・ｫ郢晢ｽｩ郢晢ｽｼ郢晁・ﾎ懃ｹｧ・｢郢晄じﾎ昴・繝ｻteel Blue ・・・Slate繝ｻ繝ｻ*/
 :root {
     --primary: #3D7DCA;       /* steel blue */
     --primary-hover: #2F6DB8; /* deeper steel */
@@ -54,7 +54,7 @@ html { scrollbar-gutter: stable; }
     --header-min-height-mobile: 160px;
 }
 
-/* ===== ヘッダー ===== */
+/* ===== 郢晏･繝｣郢敖郢晢ｽｼ ===== */
 .site-header {
     background: #ffffff;
     color: #2d3748;
@@ -63,6 +63,7 @@ html { scrollbar-gutter: stable; }
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid #e2e8f0;
+    transition: transform 0.2s ease;
 }
 
 .header-container {
@@ -81,7 +82,7 @@ html { scrollbar-gutter: stable; }
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    white-space: nowrap; /* タイトルの折返し防止 */
+    white-space: nowrap; /* 郢ｧ・ｿ郢ｧ・､郢晏現ﾎ晉ｸｺ・ｮ隰壼ｩ・ｿ譁撰ｼ鬮ｦ・ｲ雎・ｽ｢ */
 }
 
 .site-nav {
@@ -112,7 +113,7 @@ html { scrollbar-gutter: stable; }
     background: var(--bg-soft);
 }
 
-/* ナビゲーションの英語サブラベル */
+/* 郢晉ｿｫ繝ｳ郢ｧ・ｲ郢晢ｽｼ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ邵ｺ・ｮ髣搾ｽｱ髫ｱ讒ｭ縺礼ｹ晄じﾎ帷ｹ晏生ﾎ・*/
 .nav-link .nav-label { line-height: 1.2; }
 .nav-link .nav-sub {
     font-size: 0.75rem;
@@ -138,19 +139,60 @@ html { scrollbar-gutter: stable; }
     transition: 0.3s;
 }
 
-/* ===== メインコンテンツ ===== */
+.site-nav.active {
+    display: flex !important;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e2e8f0;
+}
+
+.site-nav.active .nav-list {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.site-nav.active .nav-link {
+    color: #4a5568;
+    padding: 12px 16px;
+    border-radius: 6px;
+}
+
+.site-nav.active .nav-link:hover {
+    background: #f7fafc;
+    color: #2d3748;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* ===== 郢晢ｽ｡郢ｧ・､郢晢ｽｳ郢ｧ・ｳ郢晢ｽｳ郢昴・ﾎｦ郢昴・===== */
 main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ===== ヒーローセクション ===== */
+/* ===== 郢晏・繝ｻ郢晢ｽｭ郢晢ｽｼ郢ｧ・ｻ郢ｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ ===== */
 .hero-section {
     background: linear-gradient(180deg, #E9EEF5 0%, #E3EAF3 100%);
     color: #1F2937;
     padding: 80px 0;
-    /* ビューポート幅いっぱいに広げる */
+    /* 郢晁侭ﾎ礼ｹ晢ｽｼ郢晄亢繝ｻ郢昜ｺ･・ｹ繝ｻ・樒ｸｺ・｣邵ｺ・ｱ邵ｺ繝ｻ竊楢弱・・｡郢ｧ繝ｻ*/
     width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -219,7 +261,7 @@ main {
     color: #ffffff;
 }
 
-/* ===== ボタンスタイル ===== */
+/* ===== 郢晄㈱縺｡郢晢ｽｳ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -268,7 +310,7 @@ main {
     transform: translateY(-1px);
 }
 
-/* ===== コンテンツセクション ===== */
+/* ===== 郢ｧ・ｳ郢晢ｽｳ郢昴・ﾎｦ郢昴・縺晉ｹｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ ===== */
 .content-section {
     margin-bottom: 80px;
 }
@@ -280,7 +322,7 @@ main {
     margin-bottom: 60px;
 }
 
-/* ===== カードスタイル ===== */
+/* ===== 郢ｧ・ｫ郢晢ｽｼ郢晏ｳｨ縺帷ｹｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 .card {
     background: white;
     border-radius: 8px;
@@ -335,7 +377,7 @@ main {
     color: var(--primary-hover);
 }
 
-/* ===== セクションスタイル ===== */
+/* ===== 郢ｧ・ｻ郢ｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 .recent-posts-section {
     margin-bottom: 80px;
 }
@@ -348,7 +390,7 @@ main {
     text-align: center;
 }
 
-/* ===== 記事カード ===== */
+/* ===== 髫ｪ蛟・ｽｺ荵昴″郢晢ｽｼ郢昴・===== */
 .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -356,7 +398,7 @@ main {
     margin-bottom: 40px;
 }
 
-/* ホームの最新記事は3列固定（中幅2列/狭幅1列にフォールバック） */
+/* 郢晏ｸ吶・郢晢｣ｰ邵ｺ・ｮ隴崢隴・ｽｰ髫ｪ蛟・ｽｺ荵昴・3陋ｻ諤懷ｴ玖楜螟ｲ・ｼ莠包ｽｸ・ｭ陝ｷ繝ｻ陋ｻ繝ｻ霑｢・ｭ陝ｷ繝ｻ陋ｻ蜉ｱ竊鍋ｹ晁ｼ斐°郢晢ｽｼ郢晢ｽｫ郢晁・繝｣郢ｧ・ｯ繝ｻ繝ｻ*/
 .recent-posts-section .posts-grid { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 1024px){ .recent-posts-section .posts-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px){ .recent-posts-section .posts-grid { grid-template-columns: 1fr; } }
@@ -404,7 +446,7 @@ main {
     font-size: 0.9rem;
 }
 
-/* 記事カード: 下部横並び（左：日付/カテゴリ、右：続きを読む） */
+/* 髫ｪ蛟・ｽｺ荵昴″郢晢ｽｼ郢昴・ 闕ｳ遏ｩﾎ夊ｮ難ｽｪ闕ｳ・ｦ邵ｺ・ｳ繝ｻ莠･・ｷ・ｦ繝ｻ螢ｽ蠕玖脂繝ｻ郢ｧ・ｫ郢昴・縺也ｹ晢ｽｪ邵ｲ竏晄価繝ｻ螟ゑｽｶ螢ｹ窶ｳ郢ｧ螳夲ｽｪ・ｭ郢ｧﾂ繝ｻ繝ｻ*/
 .post-footer-inline {
   display: flex;
   justify-content: space-between;
@@ -412,20 +454,20 @@ main {
   gap: 12px;
   margin-top: auto;
   border-top: 1px solid #EEF2F7;
-  padding-top: 16px;   /* 区切り線と要素の間隔 */
-  padding-bottom: 6px; /* 下側の余白 */
-  min-height: 40px;    /* 全体高さを少しだけ確保 */
+  padding-top: 16px;   /* 陋ｹ・ｺ陋ｻ繝ｻ・企こ螢ｹ竊帝囎竏ｫ・ｴ・ｰ邵ｺ・ｮ鬮｢鬥ｴ蝗・*/
+  padding-bottom: 6px; /* 闕ｳ蜿･繝ｻ邵ｺ・ｮ闖ｴ蜥丞項 */
+  min-height: 40px;    /* 陷茨ｽｨ闖ｴ鬥ｴ・ｫ蛟･・・ｹｧ雋橸ｽｰ莉｣・邵ｺ・ｰ邵ｺ驢搾ｽ｢・ｺ闖ｫ繝ｻ*/
 }
 .post-footer-inline .post-meta { order: 0; margin: 0; display: flex; align-items: center; gap: 10px; }
 .post-footer-inline .post-date { color: #718096; line-height: 1; display: inline-flex; align-items: center; padding-top: 1px; }
 .post-footer-inline .post-category { background: #E2E8F0; color: #4a5568; height: 28px; padding: 0 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; line-height: 28px; }
 .post-footer-inline .post-link,
 .post-footer-inline .article-link { display: inline-flex; align-items: center; line-height: 1; padding-top: 1px; }
-/* フッター内のリンクは余白・位置指定をフッター用に上書き */
+/* 郢晁ｼ斐Ε郢ｧ・ｿ郢晢ｽｼ陷繝ｻ繝ｻ郢晢ｽｪ郢晢ｽｳ郢ｧ・ｯ邵ｺ・ｯ闖ｴ蜥丞項郢晢ｽｻ闖ｴ蜥ｲ・ｽ・ｮ隰悶・・ｮ螢ｹ・堤ｹ晁ｼ斐Ε郢ｧ・ｿ郢晢ｽｼ騾包ｽｨ邵ｺ・ｫ闕ｳ鬆大ｶ檎ｸｺ繝ｻ*/
 .post-footer-inline .post-link,
 .post-footer-inline .article-link { margin: 0; align-self: auto; }
 
-/* カード抜粋は3行で切る */
+/* 郢ｧ・ｫ郢晢ｽｼ郢晉判譬｢驍贋ｹ昴・3髯ｦ蠕後定崕繝ｻ・・*/
 .post-excerpt,
 .article-excerpt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
 
@@ -474,7 +516,7 @@ main {
     text-align: center;
 }
 
-/* ===== フッター ===== */
+/* ===== 郢晁ｼ斐Ε郢ｧ・ｿ郢晢ｽｼ ===== */
 .site-footer {
     background: linear-gradient(180deg, #E9EEF5 0%, #E3EAF3 100%);
     color: #1F2937;
@@ -482,7 +524,14 @@ main {
     padding: 24px 0 16px;
 }
 
-.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* footer top elements removed */
 
@@ -537,6 +586,90 @@ main {
     color: #718096;
 }
 
+.social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #dbe3ee;
+    background: #fff;
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.social-link img {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.social-link:hover {
+    background: #f8fbff;
+    border-color: #bfd3f4;
+    color: #1f3556;
+}
+
+.footer-social {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin: 6px 0 14px;
+}
+
+.social-links-footer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.social-links-footer .social-link {
+    padding: 0;
+    min-width: 40px;
+    min-height: 40px;
+    justify-content: center;
+    border: none;
+    background: transparent;
+}
+
+.social-links-footer .social-link img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-links-footer .social-link:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.social-links-footer .social-link span {
+    display: none;
+}
+
+.social-links-inline .social-link {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+}
+
+.social-links-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.info-item-social {
+    align-items: flex-start;
+}
+
 /* ===== Back-to-top button ===== */
 .back-to-top {
     position: fixed;
@@ -559,7 +692,7 @@ main {
 .back-to-top:hover { background: var(--primary-hover); transform: translateY(-2px); }
 .back-to-top svg { width: 18px; height: 18px; }
 
-/* ===== 見出しスタイル ===== */
+/* ===== 髫募唱繝ｻ邵ｺ蜉ｱ縺帷ｹｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 h1, h2, h3, h4, h5, h6 {
     color: #2d3748;
     font-weight: 700;
@@ -581,7 +714,7 @@ h3 {
     margin-bottom: 15px;
 }
 
-/* ===== リンクスタイル ===== */
+/* ===== 郢晢ｽｪ郢晢ｽｳ郢ｧ・ｯ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ ===== */
 a {
     color: var(--primary);
     text-decoration: none;
@@ -592,11 +725,11 @@ a:hover {
     color: var(--primary-hover);
 }
 
-/* ===== レスポンシブデザイン ===== */
+/* ===== 郢晢ｽｬ郢ｧ・ｹ郢晄亢ﾎｦ郢ｧ・ｷ郢晄じ繝ｧ郢ｧ・ｶ郢ｧ・､郢晢ｽｳ ===== */
 @media (max-width: 1200px) {
     .nav-list { gap: 20px; }
     .nav-link { padding: 6px 10px; }
-    .nav-link .nav-sub { display: none; } /* 英語サブラベルを隠し高さを抑える */
+    .nav-link .nav-sub { display: none; } /* 髣搾ｽｱ髫ｱ讒ｭ縺礼ｹ晄じﾎ帷ｹ晏生ﾎ晉ｹｧ蟶晏恚邵ｺ驤ｴ・ｫ蛟･・・ｹｧ蜻域､帷ｸｺ蛹ｻ・・*/
 }
 
 @media (max-width: 1024px) {
@@ -673,7 +806,7 @@ a:hover {
     }
 }
 
-/* ===== 確率分布ビューアのスタイル（既存のまま保持） ===== */
+/* ===== 驕抵ｽｺ驍・・繝ｻ陝ｶ繝ｻ繝ｳ郢晢ｽ･郢晢ｽｼ郢ｧ・｢邵ｺ・ｮ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ繝ｻ蝓滄㈹陝・･繝ｻ邵ｺ・ｾ邵ｺ・ｾ闖ｫ譎・亜繝ｻ繝ｻ===== */
 .probability-viewer {
     max-width: 1200px;
     margin: 0 auto;
@@ -681,7 +814,7 @@ a:hover {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* ヘッダー */
+/* 郢晏･繝｣郢敖郢晢ｽｼ */
 .viewer-header {
     text-align: center;
     margin-bottom: 30px;
@@ -707,7 +840,7 @@ a:hover {
     font-size: 1.1rem;
 }
 
-/* ナビゲーションタブ */
+/* 郢晉ｿｫ繝ｳ郢ｧ・ｲ郢晢ｽｼ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ郢ｧ・ｿ郢昴・*/
 .nav-tabs {
     display: flex;
     justify-content: center;
@@ -741,13 +874,13 @@ a:hover {
     background: var(--bg-soft);
 }
 
-/* メインコンテンツ */
+/* 郢晢ｽ｡郢ｧ・､郢晢ｽｳ郢ｧ・ｳ郢晢ｽｳ郢昴・ﾎｦ郢昴・*/
 .viewer-grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
 .panel-left { position: sticky; top: 84px; height: fit-content; }
-/* .panel-right: 右側パネル用のフック（必要になれば定義） */
+/* .panel-right: 陷ｿ・ｳ陋幢ｽｴ郢昜ｻ｣繝ｭ郢晢ｽｫ騾包ｽｨ邵ｺ・ｮ郢晁ｼ斐Ε郢ｧ・ｯ繝ｻ莠･・ｿ繝ｻ・ｦ竏壺・邵ｺ・ｪ郢ｧ蠕後・陞ｳ螟ゑｽｾ・ｩ繝ｻ繝ｻ*/
 .info-top { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin: 0 20px; }
 
-/* 左パネルのパラメータは縦積み */
+/* 陝ｾ・ｦ郢昜ｻ｣繝ｭ郢晢ｽｫ邵ｺ・ｮ郢昜ｻ｣ﾎ帷ｹ晢ｽ｡郢晢ｽｼ郢ｧ・ｿ邵ｺ・ｯ驍ｵ・ｦ驕ｨ髦ｪ竏ｩ */
 .panel-left #parameter-controls .control-group { padding: 12px 20px; border-bottom: 1px solid #e2e8f0; }
 .panel-left #parameter-controls .control-group:last-child { border-bottom: none; }
 
@@ -761,7 +894,7 @@ a:hover {
   .panel-left { position: static; }
 }
 
-/* パネル共通スタイル */
+/* 郢昜ｻ｣繝ｭ郢晢ｽｫ陷茨ｽｱ鬨ｾ螢ｹ縺帷ｹｧ・ｿ郢ｧ・､郢晢ｽｫ */
 .panel {
     background: white;
     border-radius: 10px;
@@ -789,7 +922,7 @@ a:hover {
     margin-top: 0;
 }
 
-/* コントロールパネル */
+/* 郢ｧ・ｳ郢晢ｽｳ郢晏現ﾎ溽ｹ晢ｽｼ郢晢ｽｫ郢昜ｻ｣繝ｭ郢晢ｽｫ */
 .control-group {
     padding: 20px;
     border-bottom: 1px solid #e2e8f0;
@@ -807,7 +940,7 @@ a:hover {
     font-size: 0.95rem;
 }
 
-/* ===== 確率計算 UI ===== */
+/* ===== 驕抵ｽｺ驍・・・ｨ閧ｲ・ｮ繝ｻUI ===== */
 .panel-subtitle {
     padding: 10px 20px 6px;
     font-size: 0.9rem;
@@ -934,7 +1067,7 @@ a:hover {
     text-align: center;
 }
 
-/* クイックアクション */
+/* 郢ｧ・ｯ郢ｧ・､郢昴・縺醍ｹｧ・｢郢ｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ */
 .quick-actions {
     padding: 20px;
     display: flex;
@@ -963,17 +1096,17 @@ a:hover {
     transform: translateY(-1px);
 }
 
-/* プロットコンテナ */
+/* 郢晏干ﾎ溽ｹ昴・繝ｨ郢ｧ・ｳ郢晢ｽｳ郢昴・繝ｪ */
 .plot-container {
     padding: 10px 20px 16px;
     min-height: 500px;
     position: relative;
 }
 
-/* 上部の分布選択を詰めて表示 */
+/* 闕ｳ莨∃夂ｸｺ・ｮ陋ｻ繝ｻ・ｸ繝ｻ竏郁ｬ壽ｧｭ・帝圦・ｰ郢ｧ竏壺ｻ髯ｦ・ｨ驕会ｽｺ */
 .control-group.control-top { padding-top: 16px; padding-bottom: 12px; border-bottom: none; }
 
-/* 情報パネル */
+/* 隲繝ｻ・ｰ・ｱ郢昜ｻ｣繝ｭ郢晢ｽｫ */
 .info-panel {
     padding: 20px;
     border-top: 1px solid #e2e8f0;
@@ -1018,7 +1151,7 @@ a:hover {
     color: #1e293b;
 }
 
-/* 統計パネル */
+/* 驍ｨ・ｱ髫ｪ蛹ｻ繝ｱ郢晞亂ﾎ・*/
 #stats-panel {
     grid-column: 1 / -1;
     margin-top: 30px;
@@ -1052,7 +1185,7 @@ a:hover {
     font-weight: 500;
 }
 
-/* レスポンシブデザイン */
+/* 郢晢ｽｬ郢ｧ・ｹ郢晄亢ﾎｦ郢ｧ・ｷ郢晄じ繝ｧ郢ｧ・ｶ郢ｧ・､郢晢ｽｳ */
 @media (max-width: 1024px) {
     .viewer-content {
         grid-template-columns: 1fr;
@@ -1095,25 +1228,25 @@ a:hover {
     }
 }
 
-/* フォーカススタイル（キーボード操作時のみ見せる） */
+/* 郢晁ｼ斐°郢晢ｽｼ郢ｧ・ｫ郢ｧ・ｹ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ繝ｻ蛹ｻ縺冗ｹ晢ｽｼ郢晄㈱繝ｻ郢晉判譯・抄諛亥・邵ｺ・ｮ邵ｺ・ｿ髫穂ｹ昶雷郢ｧ蜈ｷ・ｼ繝ｻ*/
 button:focus, select:focus, input:focus, a:focus { outline: none; }
 button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
-/* ===== ページヘッダー ===== */
+/* ===== 郢晏｣ｹ繝ｻ郢ｧ・ｸ郢晏･繝｣郢敖郢晢ｽｼ ===== */
 .page-header {
     /* Fixed-page light header (baseline across site) */
     background: linear-gradient(180deg, #E9EEF5 0%, #E3EAF3 100%);
     color: #1F2937;
-    padding: var(--header-padding-y-desktop) 0; /* 全ページで統一 */
+    padding: var(--header-padding-y-desktop) 0; /* 陷茨ｽｨ郢晏｣ｹ繝ｻ郢ｧ・ｸ邵ｺ・ｧ驍ｨ・ｱ闕ｳﾂ */
     min-height: var(--header-min-height-desktop);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* ビューポート幅いっぱいに広げる */
+    /* 郢晁侭ﾎ礼ｹ晢ｽｼ郢晄亢繝ｻ郢昜ｺ･・ｹ繝ｻ・樒ｸｺ・｣邵ｺ・ｱ邵ｺ繝ｻ竊楢弱・・｡郢ｧ繝ｻ*/
     width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -1158,7 +1291,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin-bottom: 0;
 }
 
-/* ===== プロフィールページ ===== */
+/* ===== 郢晏干ﾎ溽ｹ晁ｼ斐≦郢晢ｽｼ郢晢ｽｫ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .profile-content {
     max-width: 1100px;
     margin: 0 auto;
@@ -1189,7 +1322,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     display: grid;
     gap: 12px;
 }
-/* 最初の行は見出し下のボーダーと重ならないよう非表示 */
+/* 隴崢陋ｻ譏ｴ繝ｻ髯ｦ蠕後・髫募唱繝ｻ邵ｺ蠍ｺ・ｸ荵昴・郢晄㈱繝ｻ郢敖郢晢ｽｼ邵ｺ・ｨ鬩･髦ｪ竊醍ｹｧ蟲ｨ竊醍ｸｺ繝ｻ・育ｸｺ繝ｻ謦ｼ髯ｦ・ｨ驕会ｽｺ */
 .info-grid .info-item:first-child { border-top: none; }
 
 .info-item {
@@ -1228,7 +1361,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin: 0;
 }
 
-/* タイムライン */
+/* 郢ｧ・ｿ郢ｧ・､郢晢｣ｰ郢晢ｽｩ郢ｧ・､郢晢ｽｳ */
 .timeline {
     position: relative;
 }
@@ -1266,13 +1399,13 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 
 .timeline-content { color: #4a5568; line-height: 1.6; }
 
-/* 経験リスト */
+/* 驍ｨ遒・ｽｨ阮厥懃ｹｧ・ｹ郢昴・*/
 .experience-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-/* 最初の行はボーダーを消す */
+/* 隴崢陋ｻ譏ｴ繝ｻ髯ｦ蠕後・郢晄㈱繝ｻ郢敖郢晢ｽｼ郢ｧ蜻茨ｽｶ蛹ｻ笘・*/
 .experience-list .experience-item:first-child { border-top: none; }
 
 .experience-item {
@@ -1297,13 +1430,13 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     line-height: 1.6;
 }
 
-/* 所属学会 */
+/* 隰・陞ｻ讒ｫ・ｭ・ｦ闔ｨ繝ｻ*/
 .membership-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-/* 最初の行はボーダーを消す */
+/* 隴崢陋ｻ譏ｴ繝ｻ髯ｦ蠕後・郢晄㈱繝ｻ郢敖郢晢ｽｼ郢ｧ蜻茨ｽｶ蛹ｻ笘・*/
 .membership-list .membership-item:first-child { border-top: none; }
 
 .membership-item {
@@ -1320,7 +1453,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 .info-value, .timeline-content, .experience-title, .membership-item { color: #4a5568; }
 
 
-/* ===== 研究ページ ===== */
+/* ===== 驕千坩・ｩ・ｶ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .research-content {
     max-width: 1100px;
     margin: 0 auto;
@@ -1357,7 +1490,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     font-size: 1.1rem;
 }
 
-/* 研究セクションの統一スタイル（1クラスに統一） */
+/* 驕千坩・ｩ・ｶ郢ｧ・ｻ郢ｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ邵ｺ・ｮ驍ｨ・ｱ闕ｳﾂ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ繝ｻ繝ｻ郢ｧ・ｯ郢晢ｽｩ郢ｧ・ｹ邵ｺ・ｫ驍ｨ・ｱ闕ｳﾂ繝ｻ繝ｻ*/
 .research-card .research-item h3 {
     color: #2d3748;
     font-size: 1.3rem;
@@ -1371,7 +1504,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin-bottom: 20px;
 }
 
-/* 連続する研究セクションの区切り線 */
+/* 鬨ｾ・｣驍ｯ螢ｹ笘・ｹｧ迢暦｣ｰ逧ｮ・ｩ・ｶ郢ｧ・ｻ郢ｧ・ｯ郢ｧ・ｷ郢晢ｽｧ郢晢ｽｳ邵ｺ・ｮ陋ｹ・ｺ陋ｻ繝ｻ・企こ繝ｻ*/
 .research-card .research-item + .research-item {
     border-top: 1px solid rgba(61, 125, 202, 0.35);
     padding-top: 16px;
@@ -1453,7 +1586,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin: 0;
 }
 
-/* ===== 業績ページ ===== */
+/* ===== 隶鯉ｽｭ驍ｵ・ｾ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .cv-content {
     max-width: 1100px;
     margin: 0 auto;
@@ -1480,7 +1613,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     padding-bottom: 10px;
 }
 
-/* 業績リスト */
+/* 隶鯉ｽｭ驍ｵ・ｾ郢晢ｽｪ郢ｧ・ｹ郢昴・*/
 .cv-list {
     list-style: none;
     padding: 0;
@@ -1491,16 +1624,16 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     position: relative;
     padding: 10px 0;
     border-bottom: 1px dashed #E2E8F0;
-    text-indent: -1.6em;      /* APA: ぶら下げインデント */
+    text-indent: -1.6em;      /* APA: 邵ｺ・ｶ郢ｧ謌托ｽｸ荵晢ｿ｡郢ｧ・､郢晢ｽｳ郢昴・ﾎｦ郢昴・*/
     padding-left: 1.6em;
 }
 
 .cv-list li:last-child { border-bottom: none; }
 
-/* APAでは先頭マーカー不要 */
+/* APA邵ｺ・ｧ邵ｺ・ｯ陷育｣ｯ・ｰ・ｭ郢晄ｧｭ繝ｻ郢ｧ・ｫ郢晢ｽｼ闕ｳ蟠趣ｽｦ繝ｻ*/
 .cv-list li::before { display: none; }
 
-/* 番号付き（見出し番号）用 */
+/* 騾｡・ｪ陷ｿ・ｷ闔牙･窶ｳ繝ｻ驛・ｽｦ蜿･繝ｻ邵ｺ遉ｼ蛻・愾・ｷ繝ｻ閾･逡・*/
 .cv-ol {
     list-style: decimal;
     padding-left: 2em;
@@ -1510,7 +1643,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     padding-left: 0;
 }
 
-/* 査読/種別バッジ（任意） */
+/* 隴滂ｽｻ髫ｱ・ｭ/驕橸ｽｮ陋ｻ・･郢晁・繝｣郢ｧ・ｸ繝ｻ莠包ｽｻ・ｻ隲｢謫ｾ・ｼ繝ｻ*/
 .cv-flag {
     display: inline-block;
     padding: 2px 8px;
@@ -1528,13 +1661,13 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 .cv-flag.type-oral { background: #E8F7F5; color: #2C7A7B; border-color: #B7E1DC; }
 .cv-flag.type-poster { background: #EEF4FF; color: #2F6DB8; border-color: #BFD3F4; }
 
-/* 著者名と年のスタイル */
+/* 髣｡闍督繝ｻ骭千ｸｺ・ｨ陝ｷ・ｴ邵ｺ・ｮ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ */
 .cv-authors { font-weight: 700; color: #2d3748; }
 .cv-year { color: #64748b; font-weight: 700; margin-right: 6px; }
 .cv-title { color: #1f2937; font-weight: 700; }
 .cv-venue { color: #4a5568; }
 
-/* 発表種別バッジ */
+/* 騾具ｽｺ髯ｦ・ｨ驕橸ｽｮ陋ｻ・･郢晁・繝｣郢ｧ・ｸ */
 .cv-badge {
     display: inline-block;
     padding: 4px 10px;
@@ -1610,7 +1743,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin-bottom: 8px;
 }
 
-/* ===== レスポンシブ対応 ===== */
+/* ===== 郢晢ｽｬ郢ｧ・ｹ郢晄亢ﾎｦ郢ｧ・ｷ郢晞摩・ｯ・ｾ陟｢繝ｻ===== */
 @media (max-width: 768px) {
     .page-header { padding: var(--header-padding-y-mobile) 0; min-height: var(--header-min-height-mobile); margin-bottom: 30px; }
     
@@ -1706,7 +1839,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     }
 }
 
-/* ===== コラムページ ===== */
+/* ===== 郢ｧ・ｳ郢晢ｽｩ郢晢｣ｰ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .column-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -1761,7 +1894,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     gap: 25px;
 }
 
-/* コラムページ: 常に3列×2行表示 */
+/* 郢ｧ・ｳ郢晢ｽｩ郢晢｣ｰ郢晏｣ｹ繝ｻ郢ｧ・ｸ: 陝ｶ・ｸ邵ｺ・ｫ3陋ｻ逋ゅ・髯ｦ迹夲ｽ｡・ｨ驕会ｽｺ */
 .categories-grid--fixed {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -1899,7 +2032,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     color: var(--primary-hover);
 }
 
-/* ===== カテゴリページ ===== */
+/* ===== 郢ｧ・ｫ郢昴・縺也ｹ晢ｽｪ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .category-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -1913,7 +2046,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     margin-bottom: 60px;
 }
 
-/* ===== 空状態 ===== */
+/* ===== 驕ｨ・ｺ霑･・ｶ隲ｷ繝ｻ===== */
 .empty-state {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -1926,13 +2059,13 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 .empty-title { color: #2d3748; font-weight: 800; margin-bottom: 8px; }
 .empty-text { color: #4a5568; }
 
-/* ===== 投稿ページ ===== */
+/* ===== 隰壽・・ｨ・ｿ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .post {
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* .post-hero の余白調整は削除し、.page-header に統一 */
+/* .post-hero 邵ｺ・ｮ闖ｴ蜥丞項髫ｱ・ｿ隰ｨ・ｴ邵ｺ・ｯ陷台ｼ∝求邵ｺ蜉ｱﾂ繝ｻpage-header 邵ｺ・ｫ驍ｨ・ｱ闕ｳﾂ */
 
 .post-breadcrumb {
     display: flex;
@@ -1964,7 +2097,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* 本文の読みやすさ強化 */
+/* 隴幢ｽｬ隴√・繝ｻ髫ｱ・ｭ邵ｺ・ｿ郢ｧ繝ｻ笘・ｸｺ蜍滂ｽｼ・ｷ陋ｹ繝ｻ*/
 .post-content p { margin: 1em 0; color: #374151; line-height: 1.85; font-size: 1.05rem; }
 .post-content h2 { margin: 1.6em 0 0.6em; padding-bottom: .3em; border-bottom: 1px solid #E2E8F0; }
 .post-content h3 { margin: 1.4em 0 .5em; }
@@ -1974,7 +2107,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 .post-content code { background: #F3F4F6; padding: 2px 6px; border-radius: 4px; }
 .post-content pre { background: #0b1020; color: #e5e7eb; padding: 16px 18px; border-radius: 8px; overflow: auto; }
 
-/* 表のスタイル */
+/* 髯ｦ・ｨ邵ｺ・ｮ郢ｧ・ｹ郢ｧ・ｿ郢ｧ・､郢晢ｽｫ */
 .post-content table { width: 100%; border-collapse: collapse; margin: 1.2em 0; font-size: 0.95rem; }
 .post-content th, .post-content td { border: 1px solid #E2E8F0; padding: 10px 12px; text-align: left; }
 .post-content thead th { background: #F8FAFC; font-weight: 700; }
@@ -2040,18 +2173,18 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
 }
 
 .post-navigation a { color: #2d3748; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-.post-navigation .prev-post::before { content: '←'; }
-.post-navigation .next-post::after { content: '→'; }
+.post-navigation .prev-post::before { content: "← "; }
+.post-navigation .next-post::after { content: " →"; }
 
 .post-navigation a:hover { color: #4a5568; }
 
-/* ===== リンクページ ===== */
+/* ===== 郢晢ｽｪ郢晢ｽｳ郢ｧ・ｯ郢晏｣ｹ繝ｻ郢ｧ・ｸ ===== */
 .links-section {
     max-width: 1100px;
     margin: 0 auto 80px;
 }
 
-/* ===== 共通パンくず ===== */
+/* ===== 陷茨ｽｱ鬨ｾ螢ｹ繝ｱ郢晢ｽｳ邵ｺ荳岩・ ===== */
 .breadcrumb {
     max-width: 1200px;
     margin: 12px auto 12px;
@@ -2137,7 +2270,7 @@ button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible
     text-align: center;
 }
 
-/* ===== レスポンシブ対応 ===== */
+/* ===== 郢晢ｽｬ郢ｧ・ｹ郢晄亢ﾎｦ郢ｧ・ｷ郢晞摩・ｯ・ｾ陟｢繝ｻ===== */
 @media (max-width: 768px) {
     .intro-card {
         padding: 30px 20px;
