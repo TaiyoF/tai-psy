@@ -47,7 +47,16 @@ show_papers: false
             </ol>
         </div>
     </section>
-
+    
+    <section class="cv-section">
+        <div class="cv-card">
+            <h2>受賞</h2>
+            <ol class="cv-ol">
+                <li>大阪大学社会心理学研究室 阪大社心2025　一匹狼と見つける「取り残される喜び」：JOMOで開く自分らしい時間，第3回インフォメーション・ヘルスアワード特別賞　2025年12月</li>
+            </ol>
+        </div>
+    </section>
+    
     <div class="cv-download">
         <button id="download-cv-text" class="btn btn-outline">テキストファイルでダウンロード</button>
     </div>
