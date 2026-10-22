@@ -69,6 +69,7 @@ permalink: /about-me/
             <div class="membership-list">
                 <div class="membership-item">日本社会心理学会</div>
                 <div class="membership-item">日本行動進化学会</div>
+                <div class="membership-item">日本グループ・ダイナミックス学会</div>
             </div>
         </div>
     </section>
